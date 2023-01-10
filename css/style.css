@@ -772,6 +772,15 @@ h3 {
   font-size: 20px;
   outline: 0;
 }
+.link{
+  transition: .4s;
+}
+
+.link:hover{
+  font-size: 20px;
+}
+
+
 
 #card-social > a > i {
   color: #5a6482;
@@ -857,6 +866,11 @@ h3 {
 
 .my-info a:hover {
   transform: translateY(-3px);
+}
+
+
+.footer-info a:hover{
+  color:#126f85;
 }
 
 @media only screen and (max-width: 1400px) {

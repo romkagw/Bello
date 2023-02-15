@@ -15,27 +15,15 @@ ul,
 li,
 fieldset,
 form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
 tr,
 th,
 td,
 article,
 aside,
 canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
 menu,
 nav,
+button,
 section,
 summary,
 time,
@@ -144,7 +132,7 @@ button {
 	color: #ffffff;
 }
 
-.header-main {
+.promo {
 	height: 776px;
 }
 
@@ -153,17 +141,17 @@ button {
 	margin: 0 auto;
 }
 
-.header-content {
+.promo-content {
 	position: relative;
 	display: flex;
 }
 
-.header-info {
+.promo-info {
 	margin-top: 196px;
 	width: 460px;
 	height: 383px;
 }
-.header-image {
+.promo-image {
 	left: 350px;
 	top: 17px;
 	position: absolute;
@@ -174,7 +162,7 @@ button {
 	height: 697px;
 }
 
-.header-info > h4 {
+.promo-info > h4 {
 	font-family: 'Work Sans';
 	font-weight: 600;
 	font-size: 18px;
@@ -182,7 +170,7 @@ button {
 	color: #f46752;
 }
 
-.header-info > h1 {
+.promo-info > h1 {
 	font-family: 'Work Sans';
 	font-weight: 600;
 	font-size: 64px;
@@ -191,7 +179,7 @@ button {
 	color: #1d253c;
 	margin-bottom: 26px;
 }
-.header-info > p {
+.promo-info > p {
 	font-family: 'Work Sans';
 	font-weight: 500;
 	font-size: 22px;
@@ -213,6 +201,9 @@ button {
 	text-transform: uppercase;
 	color: #ffffff;
 	transition: 0.5s;
+	* {
+		fill: white;
+	}
 }
 
 .get-my-price:hover {
@@ -284,14 +275,16 @@ h5 {
 	color: #5a6482;
 	margin-bottom: 32px;
 }
-.text-content-stats-block > a,
-.help-content > a {
+.text-content-stats-block > button,
+.help-content > button {
 	font-family: 'Work Sans';
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 22px;
 	color: #126f86;
-	text-decoration: none;
+	* {
+		fill: #126f86;
+	}
 }
 
 #help {
@@ -341,7 +334,7 @@ h3 {
 	height: 124px;
 	top: -35px;
 	left: -45px;
-	background-image: url('../public/images/Page-1.svg');
+	background-image: url('../public/images/Points.svg');
 }
 
 .help-image::after {
@@ -605,7 +598,7 @@ h3 {
 	top: -35px;
 	left: -45px;
 	z-index: -1;
-	background-image: url('../public/images/Page-1.svg');
+	background-image: url('../public/images/Points.svg');
 }
 
 .learning-center-image::before {
@@ -646,6 +639,18 @@ h3 {
 	line-height: 30px;
 	color: #5a6482;
 }
+.learning-center-content > button {
+	font-family: 'Roboto';
+	font-size: 18px;
+	line-height: 22px;
+	border: none;
+	background: none;
+	width: fit-content;
+	color: #007189;
+	* {
+		fill: #007189;
+	}
+}
 
 .learning-center-content > a {
 	font-family: 'Roboto';
@@ -669,36 +674,6 @@ h3 {
 	justify-content: space-between;
 }
 
-.boards {
-	width: 260px;
-	height: 323px;
-}
-
-.boards h4 {
-	margin-top: 40px;
-	margin-left: 22px;
-	font-family: 'Work Sans';
-	font-weight: 600;
-	font-size: 34px;
-	line-height: 42px;
-	width: 150px;
-}
-.boards p {
-	margin-left: 22px;
-	margin-right: 5px;
-	font-family: 'Work Sans';
-	font-size: 16px;
-	line-height: 19px;
-}
-.boards a {
-	margin-left: 22px;
-	font-family: 'Work Sans';
-	font-weight: 600;
-	font-size: 16px;
-	line-height: 19px;
-	text-decoration: none;
-}
-
 .card1 {
 	background: rgba(169, 216, 255, 0.3);
 	color: #7cafdd;
@@ -715,17 +690,29 @@ h3 {
 	background: rgba(18, 111, 133, 0.3);
 	color: #126f85;
 }
-.card1 a {
+.card1 button {
 	color: #7cafdd;
+	* {
+		fill: #7cafdd;
+	}
 }
-.card2 a {
+.card2 button {
 	color: #e79751;
+	* {
+		fill: #e79751;
+	}
 }
-.card3 a {
+.card3 button {
 	color: #fa5240;
+	* {
+		fill: #fa5240;
+	}
 }
-.card4 a {
+.card4 button {
 	color: #126f85;
+	* {
+		fill: #126f85;
+	}
 }
 
 .card1 p {
@@ -734,7 +721,7 @@ h3 {
 }
 .card2 p {
 	margin-top: 21px;
-	margin-bottom: 84px;
+	margin-bottom: 70px;
 }
 .card3 p {
 	margin-top: 63px;
@@ -840,6 +827,9 @@ h3 {
 	font-size: 14px;
 	line-height: 23px;
 	color: #ffffff;
+	* {
+		fill: #ffffff;
+	}
 }
 
 .footer-info {
@@ -857,13 +847,6 @@ h3 {
 	margin-top: 20px;
 	font-size: 20px;
 	outline: 0;
-}
-.link {
-	transition: 0.4s;
-}
-
-.link:hover {
-	font-size: 20px;
 }
 
 #card-social > a svg {
@@ -905,7 +888,6 @@ h3 {
 }
 
 #footer-lower div > p {
-	margin: 0;
 	font-family: 'Roboto';
 	font-size: 16px;
 	line-height: 19px;
@@ -966,13 +948,13 @@ h3 {
 	.buttons-header {
 		margin-left: 445px;
 	}
-	.header-main {
+	.promo {
 		height: 690px;
 	}
-	.header-info {
+	.promo-info {
 		margin-top: 140px;
 	}
-	.header-image {
+	.promo-image {
 		left: 335px;
 		top: 25px;
 		width: 800px;
@@ -1022,19 +1004,19 @@ h3 {
 	.buttons-header {
 		margin-left: 250px;
 	}
-	.header-main {
+	.promo {
 		height: 590px;
 	}
-	.header-info {
+	.promo-info {
 		margin-top: 105px;
 		width: 400px;
 	}
-	.header-image {
+	.promo-image {
 		top: 107px;
 		width: 611px;
 		height: 450px;
 	}
-	.header-info > h1 {
+	.promo-info > h1 {
 		font-size: 54px;
 		line-height: 54px;
 	}
@@ -1094,11 +1076,6 @@ h3 {
 
 	.cards-block {
 		width: 920px;
-	}
-
-	.boards {
-		width: 220px;
-		height: 300px;
 	}
 
 	.card2 p {
@@ -1170,18 +1147,18 @@ h3 {
 	.buttons-header {
 		margin-left: 100px;
 	}
-	.header-main {
+	.promo {
 		height: 500px;
 	}
-	.header-info {
+	.promo-info {
 		margin-top: 80px;
 		width: 380px;
 	}
-	.header-image {
+	.promo-image {
 		width: 437px;
 		left: 300px;
 	}
-	.header-info > h1 {
+	.promo-info > h1 {
 		font-size: 52px;
 		line-height: 52px;
 	}
@@ -1199,7 +1176,7 @@ h3 {
 		height: 50px;
 		font-size: 14px;
 	}
-	.header-info > p {
+	.promo-info > p {
 		font-size: 20px;
 	}
 	#stats {
@@ -1328,28 +1305,11 @@ h3 {
 	.cards-block {
 		width: 700px;
 	}
-	.boards {
-		width: 170px;
-		height: 280px;
-	}
-	.boards h4 {
-		margin-top: 14px;
-		text-align: center;
-		font-size: 26px;
-		line-height: 27px;
-		width: 0;
-		margin-left: 20px;
-	}
-
-	.boards a {
-		margin-left: 13px;
-		font-size: 12px;
-	}
 
 	.card2 p {
-		margin-bottom: 54px;
+		margin-bottom: 82px;
 	}
-	card4 p {
+	.card4 p {
 		margin-bottom: 99px;
 	}
 	.get-started-content > p {
@@ -1444,11 +1404,11 @@ h3 {
 	.buttons-header {
 		margin-left: 80px;
 	}
-	.header-main {
+	.promo {
 		height: 390px;
 	}
 
-	.header-info > p {
+	.promo-info > p {
 		font-size: 16px;
 		line-height: 20px;
 		margin-bottom: 20px;
@@ -1458,12 +1418,12 @@ h3 {
 		height: 45px;
 		font-size: 13px;
 	}
-	.header-info > h1 {
+	.promo-info > h1 {
 		font-size: 45px;
 		line-height: 45px;
 	}
 
-	.header-image {
+	.promo-image {
 		width: 350px;
 		left: 213px;
 		top: 105px;
@@ -1595,11 +1555,6 @@ h3 {
 		flex-wrap: wrap;
 		justify-content: space-evenly;
 	}
-	.boards {
-		width: 47%;
-		margin: 8px;
-		height: 274px;
-	}
 
 	.card4 p {
 		margin-bottom: 98px;
@@ -1710,26 +1665,26 @@ h3 {
 	.log-in {
 		font-size: 11px;
 	}
-	.header-info > h1 {
+	.promo-info > h1 {
 		font-size: 28px;
 		line-height: 28px;
 	}
-	.header-main {
+	.promo {
 		height: 285px;
 	}
 
-	.header-image {
+	.promo-image {
 		width: 228px;
 		left: 178px;
 		top: 65px;
 		height: 185px;
 	}
-	.header-info {
+	.promo-info {
 		margin-top: 10px;
 		width: 245px;
 		height: 240px;
 	}
-	.header-info > p {
+	.promo-info > p {
 		font-size: 13px;
 		line-height: 15px;
 		margin-bottom: 20px;
@@ -1842,12 +1797,6 @@ h3 {
 		width: 390px;
 	}
 
-	.boards {
-		width: 44%;
-		margin: 7px;
-		height: 274px;
-	}
-
 	#section-cards {
 		height: 773px;
 	}
@@ -1937,16 +1886,16 @@ h3 {
 		max-width: 300px;
 	}
 
-	.header-image {
+	.promo-image {
 		display: none;
 	}
 
-	.header-info {
+	.promo-info {
 		margin: 0 auto;
 		text-align: center;
 		padding-top: 25px;
 	}
-	.header-main {
+	.promo {
 		height: 295px;
 	}
 	.get-price {
@@ -2004,10 +1953,6 @@ h3 {
 	.cards-block {
 		padding-top: 25px;
 		width: 300px;
-	}
-	.boards {
-		width: 90%;
-		margin: 11px;
 	}
 
 	#section-cards {

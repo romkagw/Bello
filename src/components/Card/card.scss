@@ -1,0 +1,78 @@
+.boards {
+	width: 260px;
+	height: 323px;
+	> * {
+		margin-left: 22px;
+		font-family: 'Work Sans';
+		font-weight: 600;
+	}
+}
+
+.boards h4 {
+	margin-top: 40px;
+	font-size: 34px;
+	line-height: 42px;
+	width: 150px;
+}
+
+.boards p {
+	margin-right: 5px;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.boards button {
+	font-size: 16px;
+	line-height: 19px;
+	background: none;
+	border: none;
+}
+
+@media only screen and (max-width: 1220px) {
+	.boards {
+		width: 220px;
+		height: 300px;
+	}
+}
+
+@media only screen and (max-width: 970px) {
+	.boards {
+		width: 170px;
+		height: 280px;
+	}
+	.boards h4 {
+		margin-top: 14px;
+		text-align: left;
+		font-size: 26px;
+		line-height: 27px;
+		margin-left: 20px;
+	}
+
+	.boards button {
+		margin-left: 13px;
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 775px) {
+	.boards {
+		width: 47%;
+		margin: 8px;
+		height: 274px;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	.boards {
+		width: 44%;
+		margin: 7px;
+		height: 274px;
+	}
+}
+
+@media only screen and (max-width: 420px) {
+	.boards {
+		width: 90%;
+		margin: 11px;
+	}
+}

@@ -10,6 +10,8 @@ import {
 import './App.scss';
 import ArrowButton from './components/Buttons/ArrowButton';
 import Card from './components/Card/Card';
+import Modal from './components/Modal/Modal';
+import PriceTable from './components/PriceTable/PriceTable';
 
 class App extends Component {
 	constructor(props) {
@@ -37,21 +39,39 @@ class App extends Component {
 					textCard: 'The ultimate guide to life insurance.',
 					textLink: 'Become an expert'
 				}
-			]
+			],
+			isModalShow: false
 		};
 
-		this.cards = this.state.card.map(({ title, textCard, textLink }, index) => (
-			<Card className={`card${index + 1}`} key={title}>
-				<h4>{title}</h4>
-				<p>{textCard}</p>
-				<ArrowButton text={textLink} />
-			</Card>
-		));
+		this.cards = this.state.card.map(
+			({ title, textCard, textLink }, index) => (
+				<Card className={`card${index + 1}`} key={title}>
+					<h4>{title}</h4>
+					<p>{textCard}</p>
+					<ArrowButton text={textLink} />
+				</Card>
+			)
+		);
 	}
+
+	openModal = () => {
+		this.setState({ isModalShow: true });
+	};
+
+	closeModal = () => {
+		this.setState({ isModalShow: false });
+	};
 
 	render() {
 		return (
 			<>
+				<Modal
+					isShow={this.state.isModalShow}
+					onClose={this.closeModal}
+				>
+					<PriceTable />
+				</Modal>
+
 				<header>
 					<div className='header-top'>
 						<div className='header-container'>
@@ -63,9 +83,13 @@ class App extends Component {
 								<a className='log-in' href='/#'>
 									Log in
 								</a>
-								<a className='get-price' href='/#'>
+								<button
+									onClick={this.openModal}
+									className='get-price'
+									href='/#'
+								>
 									Get my price
-								</a>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -82,9 +106,11 @@ class App extends Component {
 										in as little as 10 minutes.
 									</p>
 									<ArrowButton
-										text='Get my price'
+										onClick={this.openModal}
 										className='get-my-price'
-									/>
+									>
+										Get my price
+									</ArrowButton>
 								</div>
 								<div className='promo-image'></div>
 							</div>
@@ -99,7 +125,9 @@ class App extends Component {
 								<div className='image-stats'>
 									<div></div>
 									<p>
-										<span style={{ color: '#f46752' }}>*</span>
+										<span style={{ color: '#f46752' }}>
+											*
+										</span>
 										Data for illustrative purposes
 									</p>
 								</div>
@@ -108,11 +136,13 @@ class App extends Component {
 									<h2>It’s more affordable than you think</h2>
 									<p>
 										Life insurance shouldn’t be confusing or
-										expensive. Bello’s term life insurance makes
-										protecting your loved ones easy and
-										affordable.
+										expensive. Bello’s term life insurance
+										makes protecting your loved ones easy
+										and affordable.
 									</p>
-									<ArrowButton text='Get My Price' />
+									<ArrowButton onClick={this.openModal}>
+										Get My Price
+									</ArrowButton>
 								</div>
 							</div>
 						</div>
@@ -125,9 +155,9 @@ class App extends Component {
 									<h5>Technology meets service</h5>
 									<h3>We're here to help</h3>
 									<p>
-										Bella, our smart bot, can guide you to your
-										perfect policy. There’s also human help
-										whenever you need it.
+										Bella, our smart bot, can guide you to
+										your perfect policy. There’s also human
+										help whenever you need it.
 									</p>
 									<ArrowButton text='Get help' />
 								</div>
@@ -142,10 +172,10 @@ class App extends Component {
 								<h5>Top-Rated Term Life Insurance</h5>
 								<h3>You’re in safe hands</h3>
 								<p>
-									We've partnered with, [insert underwriter], one
-									of the world’s largest, most trusted insurance
-									companies. This means we can ensure reliability
-									in paying Claims.
+									We've partnered with, [insert underwriter],
+									one of the world’s largest, most trusted
+									insurance companies. This means we can
+									ensure reliability in paying Claims.
 								</p>
 							</div>
 							<div className='cards'>
@@ -157,7 +187,8 @@ class App extends Component {
 									/>
 									<h6>Top-Rated</h6>
 									<p>
-										A+ Financial Strength Rating by A.M. Best.
+										A+ Financial Strength Rating by A.M.
+										Best.
 										<a href='/#'>What does this mean?</a>
 									</p>
 								</div>
@@ -169,8 +200,8 @@ class App extends Component {
 									/>
 									<h6>Expert guidance</h6>
 									<p>
-										We've placed millions of dollars in coverage
-										people nationwide.
+										We've placed millions of dollars in
+										coverage people nationwide.
 									</p>
 								</div>
 
@@ -182,8 +213,8 @@ class App extends Component {
 									/>
 									<h6>We care</h6>
 									<p>
-										We care about you. We’re a 5 star insurance
-										company. Well… Close enough!
+										We care about you. We’re a 5 star
+										insurance company. Well… Close enough!
 									</p>
 								</div>
 							</div>
@@ -195,16 +226,25 @@ class App extends Component {
 								<h5>How it works</h5>
 								<h4>Affordable life insurance in minutes</h4>
 								<p>
-									We use technology to save you time and money – no
-									pushy sales agents, paperwork, or extra fees.
-									Just a few clicks and you’re done.
+									We use technology to save you time and money
+									– no pushy sales agents, paperwork, or extra
+									fees. Just a few clicks and you’re done.
 								</p>
 							</div>
 							<div className='instruction-content'>
 								<div className='block-circle'>
-									<img src='./images/circle.svg' alt='circle' />
-									<img src='./images/circle.svg' alt='circle' />
-									<img src='./images/circle.svg' alt='circle' />
+									<img
+										src='./images/circle.svg'
+										alt='circle'
+									/>
+									<img
+										src='./images/circle.svg'
+										alt='circle'
+									/>
+									<img
+										src='./images/circle.svg'
+										alt='circle'
+									/>
 								</div>
 								<div className='content-list'>
 									<img src='./images/1.svg' alt='1' />
@@ -214,23 +254,26 @@ class App extends Component {
 									<h6>Apply</h6>
 									<h6>You’re Covered</h6>
 									<p>
-										Choose the amount that you would like to be
-										covered for and we’ll give you a quote.
+										Choose the amount that you would like to
+										be covered for and we’ll give you a
+										quote.
 									</p>
 									<p>
-										Answer a few questions and get your final
-										price.
+										Answer a few questions and get your
+										final price.
 									</p>
 									<p>
-										Congratulations on securing your loved ones
-										financial future!
+										Congratulations on securing your loved
+										ones financial future!
 									</p>
 								</div>
 							</div>
 							<ArrowButton
-								text='Get my price'
+								onClick={this.openModal}
 								className='get-my-price'
-							/>
+							>
+								Get my price
+							</ArrowButton>
 						</div>
 					</section>
 
@@ -240,11 +283,14 @@ class App extends Component {
 								<div className='learning-center-image'></div>
 								<div className='learning-center-content'>
 									<h5>You've Got This</h5>
-									<h3>Everything you need— completely free</h3>
+									<h3>
+										Everything you need— completely free
+									</h3>
 									<p>
-										Here’s the latest info, guides, and, helpful
-										tools, from the Bello team. Learn about life
-										insurance, finances, health and wellness.
+										Here’s the latest info, guides, and,
+										helpful tools, from the Bello team.
+										Learn about life insurance, finances,
+										health and wellness.
 									</p>
 									<ArrowButton text='Visit Learning Center' />
 								</div>
@@ -267,9 +313,11 @@ class App extends Component {
 									securing their financial future.
 								</p>
 								<ArrowButton
-									text='Get my price'
+									onClick={this.openModal}
 									className='get-my-price'
-								/>
+								>
+									Get my price
+								</ArrowButton>
 							</div>
 						</div>
 					</section>
@@ -282,9 +330,9 @@ class App extends Component {
 								<div className='social-media'>
 									<img src='./images/logo.png' alt='logo' />
 									<p>
-										Bello is a trading name of Bello Insurance
-										Services LLC. Bello policies are issued by
-										[Insert Underwriter here].
+										Bello is a trading name of Bello
+										Insurance Services LLC. Bello policies
+										are issued by [Insert Underwriter here].
 									</p>
 									<div>
 										<input type='text' />
@@ -348,10 +396,12 @@ class App extends Component {
 						<div className='container'>
 							<div>
 								<p>
-									© 2020 Bello insurance Services LLC. All right
-									reserved.
+									© 2020 Bello insurance Services LLC. All
+									right reserved.
 								</p>
-								<a href='/#'>Get my price</a>
+								<button onClick={this.openModal}>
+									Get my price
+								</button>
 							</div>
 						</div>
 					</div>

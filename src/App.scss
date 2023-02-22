@@ -201,6 +201,7 @@ button {
 	text-transform: uppercase;
 	color: #ffffff;
 	transition: 0.5s;
+	z-index: 1;
 	* {
 		fill: white;
 	}
@@ -896,7 +897,7 @@ h3 {
 	margin-right: 537px;
 }
 
-#footer-lower a {
+#footer-lower button {
 	font-family: 'Roboto';
 	font-size: 14px;
 	line-height: 44px;
@@ -907,6 +908,11 @@ h3 {
 	border: 1px solid rgba(29, 37, 60, 0.2);
 	border-radius: 4px;
 	text-align: center;
+	transition: 0.4s;
+}
+#footer-lower button:hover {
+	background-color: #f46752;
+	color: rgb(255, 255, 255);
 }
 
 .my-info {

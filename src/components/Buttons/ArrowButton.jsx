@@ -3,9 +3,11 @@ import { ReactComponent as ArrowPointer } from '../../assets/images/Arrow.svg';
 
 class ArrowButton extends React.Component {
 	render() {
+		const { onClick, className, children } = this.props;
+
 		return (
-			<button className={this.props.className}>
-				{this.props.text} <ArrowPointer />
+			<button onClick={onClick} className={className}>
+				{children} <ArrowPointer />
 			</button>
 		);
 	}

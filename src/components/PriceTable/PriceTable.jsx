@@ -5,37 +5,50 @@ class PriceTable extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: [
+			priseList: [
 				{
 					id: 1,
-					name: 'Basic',
-					description: 'Basic coverage with low premiums',
-					price: '$10/month'
+					data: {
+						name: 'Basic',
+						description: 'Basic coverage with low premiums',
+						price: '$10/month'
+					}
 				},
 				{
 					id: 2,
-					name: 'Standard',
-					description: 'Standard coverage with reasonable premiums',
-					price: '$25/month'
+					data: {
+						name: 'Standard',
+						description:
+							'Standard coverage with reasonable premiums',
+						price: '$25/month'
+					}
 				},
 				{
 					id: 3,
-					name: 'Ultra',
-					description:
-						'All-inclusive coverage with the highest premiums',
-					price: '$100/month'
+					data: {
+						name: 'Ultra',
+						description:
+							'All-inclusive coverage with the highest premiums',
+						price: '$100/month'
+					}
 				},
 				{
 					id: 4,
-					name: 'Premium',
-					description: 'Comprehensive coverage with high premiums',
-					price: '$50/month'
+					data: {
+						name: 'Premium',
+						description:
+							'Comprehensive coverage with high premiums',
+						price: '$50/month'
+					}
 				},
 				{
 					id: 5,
-					name: 'Custom',
-					description: 'Tailored coverage to fit your specific needs',
-					price: 'Varies'
+					data: {
+						name: 'Custom',
+						description:
+							'Tailored coverage to fit your specific needs',
+						price: 'Varies'
+					}
 				}
 			],
 			ascendingPrice: true
@@ -57,11 +70,11 @@ class PriceTable extends Component {
          и меняем местами переменные  
      */
 	customSortData = () => {
-		const copyData = [...this.state.data]; // копируем массив чтобы не менять оригинальный
+		const copyData = [...this.state.priseList]; // копируем массив чтобы не менять оригинальный
 		for (let i = 0; i < copyData.length; i++) {
 			for (let j = i + 1; j < copyData.length; j++) {
-				const priceA = this.formatPrice(copyData[i].price);
-				const priceB = this.formatPrice(copyData[j].price);
+				const priceA = this.formatPrice(copyData[i].data.price);
+				const priceB = this.formatPrice(copyData[j].data.price);
 				if (
 					this.state.ascendingPrice
 						? priceA > priceB
@@ -73,15 +86,15 @@ class PriceTable extends Component {
 		}
 		// обновляем стейт
 		this.setState({
-			data: copyData,
+			priseList: copyData,
 			ascendingPrice: !this.state.ascendingPrice
 		});
 	};
 
 	sortData = () => {
-		const sortedData = this.state.data.sort((a, b) => {
-			const priceA = this.formatPrice(a.price);
-			const priceB = this.formatPrice(b.price);
+		const sortedData = this.state.priseList.sort((a, b) => {
+			const priceA = this.formatPrice(a.data.price);
+			const priceB = this.formatPrice(b.data.price);
 
 			return this.state.ascendingPrice
 				? priceA - priceB
@@ -89,32 +102,34 @@ class PriceTable extends Component {
 		});
 
 		this.setState({
-			data: sortedData,
+			priseList: sortedData,
 			ascendingPrice: !this.state.ascendingPrice
 		});
 	};
 
 	addElement = () => {
-		const { data } = this.state;
+		const { priseList } = this.state;
 		const obj = {
-			id: data.length + 1,
-			name: 'Lorem',
-			description: 'Lorem ipsum dolor sit amet consectetur.',
-			price: '$----/month'
+			id: priseList.length + 1,
+			data: {
+				name: 'Lorem',
+				description: 'Lorem ipsum dolor sit amet consectetur.',
+				price: '$----/month'
+			}
 		};
-		this.setState({ data: [...data, obj] });
+		this.setState({ priseList: [...priseList, obj] });
 	};
 
 	removeElement = () => {
-		const { data } = this.state;
-		if (data.length > 0) {
-			const newData = data.slice(0, -1);
-			this.setState({ data: newData });
+		const { priseList } = this.state;
+		if (priseList.length > 0) {
+			const newData = priseList.slice(0, -1);
+			this.setState({ priseList: newData });
 		}
 	};
 
 	render() {
-		const { data } = this.state;
+		const { priseList } = this.state;
 
 		return (
 			<>
@@ -129,16 +144,14 @@ class PriceTable extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{data.map(
-								({ id, name, description, price }, index) => (
-									<tr key={id}>
-										<td>{index + 1}</td>
-										<td>{name}</td>
-										<td>{description}</td>
-										<td>{price}</td>
-									</tr>
-								)
-							)}
+							{priseList.map((item, index) => (
+								<tr key={item.id}>
+									<td>{index + 1}</td>
+									<td>{item.data.name}</td>
+									<td>{item.data.description}</td>
+									<td>{item.data.price}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>

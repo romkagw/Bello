@@ -2,34 +2,10 @@
 	animation: fade-in 1s ease;
 	display: flex;
 	flex-direction: column;
+	max-height: 350px;
+	overflow: auto;
 	align-items: center;
 	width: 100%;
-
-	button {
-		animation: fade-in 1s ease;
-		margin-top: 10px;
-		font-size: 16px;
-		font-weight: 500;
-		color: #fff;
-		background-color: #126f86;
-		border-radius: 4px;
-		padding: 10px 16px;
-		cursor: pointer;
-		transition: 0.2s;
-
-		&:hover {
-			background-color: #126f86;
-		}
-
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-		}
-
-		&:active {
-			background-color: #005cbf;
-		}
-	}
 
 	table {
 		border-collapse: collapse;
@@ -72,6 +48,25 @@
 				font-size: 16px;
 			}
 		}
+	}
+}
+.button-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	button {
+		background-color: #126f86;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		margin: 10px;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 16px;
+	}
+
+	button:hover {
+		background-color: #2980b9;
 	}
 }
 

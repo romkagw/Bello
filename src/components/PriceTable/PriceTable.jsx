@@ -94,33 +94,60 @@ class PriceTable extends Component {
 		});
 	};
 
+	addElement = () => {
+		const { data } = this.state;
+		const obj = {
+			id: data.length + 1,
+			name: 'Lorem',
+			description: 'Lorem ipsum dolor sit amet consectetur.',
+			price: '$----/month'
+		};
+		this.setState({ data: [...data, obj] });
+	};
+
+	removeElement = () => {
+		const { data } = this.state;
+		if (data.length > 0) {
+			const newData = data.slice(0, -1);
+			this.setState({ data: newData });
+		}
+	};
+
 	render() {
 		const { data } = this.state;
 
 		return (
-			<div className='table-container'>
-				<table className='table'>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th> Price</th>
-						</tr>
-					</thead>
-					<tbody>
-						{data.map(({ id, name, description, price }, index) => (
-							<tr key={id}>
-								<td>{index + 1}</td>
-								<td>{name}</td>
-								<td>{description}</td>
-								<td>{price}</td>
+			<>
+				<div className='table-container'>
+					<table className='table'>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Description</th>
+								<th> Price</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
-				<button onClick={this.sortData}>Сортировать по цене</button>
-			</div>
+						</thead>
+						<tbody>
+							{data.map(
+								({ id, name, description, price }, index) => (
+									<tr key={id}>
+										<td>{index + 1}</td>
+										<td>{name}</td>
+										<td>{description}</td>
+										<td>{price}</td>
+									</tr>
+								)
+							)}
+						</tbody>
+					</table>
+				</div>
+				<div className='button-group'>
+					<button onClick={this.sortData}>Сортировать по цене</button>
+					<button onClick={this.addElement}>Добавить</button>
+					<button onClick={this.removeElement}>Удалить</button>
+				</div>
+			</>
 		);
 	}
 }

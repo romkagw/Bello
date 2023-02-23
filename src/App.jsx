@@ -48,7 +48,7 @@ class App extends Component {
 				<Card className={`card${index + 1}`} key={title}>
 					<h4>{title}</h4>
 					<p>{textCard}</p>
-					<ArrowButton text={textLink} />
+					<ArrowButton>{textLink}</ArrowButton>
 				</Card>
 			)
 		);
@@ -159,7 +159,7 @@ class App extends Component {
 										your perfect policy. There’s also human
 										help whenever you need it.
 									</p>
-									<ArrowButton text='Get help' />
+									<ArrowButton>Get help</ArrowButton>
 								</div>
 								<div className='help-image'></div>
 							</div>
@@ -292,7 +292,9 @@ class App extends Component {
 										Learn about life insurance, finances,
 										health and wellness.
 									</p>
-									<ArrowButton text='Visit Learning Center' />
+									<ArrowButton>
+										Visit Learning Center
+									</ArrowButton>
 								</div>
 							</div>
 						</div>
@@ -336,7 +338,7 @@ class App extends Component {
 									</p>
 									<div>
 										<input type='text' />
-										<ArrowButton text='Go' />
+										<ArrowButton>Go</ArrowButton>
 									</div>
 									<div id='card-social'>
 										<a

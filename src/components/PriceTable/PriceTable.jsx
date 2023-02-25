@@ -122,9 +122,28 @@ class PriceTable extends Component {
 
 	removeElement = () => {
 		const { priseList } = this.state;
-		if (priseList.length > 0) {
+		if (priseList.length) {
 			const newData = priseList.slice(0, -1);
 			this.setState({ priseList: newData });
+		}
+	};
+
+	/*
+	  Функция которая удаляет или добавляет поле - price в первом ряду,
+	  самое простое что пришло в голову чтобы показать что понимаю работу с обьектами,
+	  и возможно еще рано но пришлось затронуть  использование - event
+	*/
+	togglePrice = e => {
+		const { priseList } = this.state;
+		if (priseList.length) {
+			const temp = [...priseList];
+			temp[0].data.price
+				? delete temp[0].data.price
+				: (temp[0].data.price = '$10/month');
+			e.target.innerText = temp[0].data.price
+				? 'Удалить елемент обьекта'
+				: 'Добавить елемент обьекта';
+			this.setState({ priseList: temp });
 		}
 	};
 
@@ -159,6 +178,9 @@ class PriceTable extends Component {
 					<button onClick={this.sortData}>Сортировать по цене</button>
 					<button onClick={this.addElement}>Добавить</button>
 					<button onClick={this.removeElement}>Удалить</button>
+					<button onClick={this.togglePrice}>
+						Удалить елемент обьекта
+					</button>
 				</div>
 			</>
 		);

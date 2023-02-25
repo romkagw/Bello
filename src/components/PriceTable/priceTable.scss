@@ -81,3 +81,9 @@
 		transform: translateY(0);
 	}
 }
+
+@media screen and (max-width: 600px) {
+	.button-group {
+		flex-direction: column;
+	}
+}

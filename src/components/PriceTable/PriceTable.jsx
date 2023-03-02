@@ -18,8 +18,7 @@ class PriceTable extends Component {
 					id: 2,
 					data: {
 						name: 'Standard',
-						description:
-							'Standard coverage with reasonable premiums',
+						description: 'Standard coverage with reasonable premiums',
 						price: '$25/month'
 					}
 				},
@@ -27,8 +26,7 @@ class PriceTable extends Component {
 					id: 3,
 					data: {
 						name: 'Ultra',
-						description:
-							'All-inclusive coverage with the highest premiums',
+						description: 'All-inclusive coverage with the highest premiums',
 						price: '$100/month'
 					}
 				},
@@ -36,8 +34,7 @@ class PriceTable extends Component {
 					id: 4,
 					data: {
 						name: 'Premium',
-						description:
-							'Comprehensive coverage with high premiums',
+						description: 'Comprehensive coverage with high premiums',
 						price: '$50/month'
 					}
 				},
@@ -45,13 +42,13 @@ class PriceTable extends Component {
 					id: 5,
 					data: {
 						name: 'Custom',
-						description:
-							'Tailored coverage to fit your specific needs',
+						description: 'Tailored coverage to fit your specific needs',
 						price: 'Varies'
 					}
 				}
 			],
-			ascendingPrice: true
+			ascendingPrice: true,
+			buttonText: 'Удалить елемент обьекта'
 		};
 	}
 
@@ -69,41 +66,38 @@ class PriceTable extends Component {
          и в зависимости от того какое значение у ascendingPrice выбираем условие 
          и меняем местами переменные  
      */
-	customSortData = () => {
-		const copyData = [...this.state.priseList]; // копируем массив чтобы не менять оригинальный
-		for (let i = 0; i < copyData.length; i++) {
-			for (let j = i + 1; j < copyData.length; j++) {
-				const priceA = this.formatPrice(copyData[i].data.price);
-				const priceB = this.formatPrice(copyData[j].data.price);
-				if (
-					this.state.ascendingPrice
-						? priceA > priceB
-						: priceA < priceB
-				) {
-					[copyData[i], copyData[j]] = [copyData[j], copyData[i]];
-				}
-			}
-		}
-		// обновляем стейт
-		this.setState({
-			priseList: copyData,
-			ascendingPrice: !this.state.ascendingPrice
-		});
-	};
+	// customSortData = () => {
+	// 	const { priseList, ascendingPrice } = this.state;
+	// 	const copyData = [...priseList]; // копируем массив чтобы не менять оригинальный
+	// 	for (let i = 0; i < copyData.length; i += 1) {
+	// 		for (let j = i + 1; j < copyData.length; j += 1) {
+	// 			const priceA = this.formatPrice(copyData[i].data.price);
+	// 			const priceB = this.formatPrice(copyData[j].data.price);
+	// 			if (ascendingPrice ? priceA > priceB : priceA < priceB) {
+	// 				[copyData[i], copyData[j]] = [copyData[j], copyData[i]];
+	// 			}
+	// 		}
+	// 	}
+	// 	// обновляем стейт
+	// 	this.setState({
+	// 		priseList: copyData,
+	// 		ascendingPrice: !ascendingPrice
+	// 	});
+	// };
 
 	sortData = () => {
-		const sortedData = this.state.priseList.sort((a, b) => {
+		const { priseList, ascendingPrice } = this.state;
+
+		const sortedData = priseList.sort((a, b) => {
 			const priceA = this.formatPrice(a.data.price);
 			const priceB = this.formatPrice(b.data.price);
 
-			return this.state.ascendingPrice
-				? priceA - priceB
-				: priceB - priceA;
+			return ascendingPrice ? priceA - priceB : priceB - priceA;
 		});
 
 		this.setState({
 			priseList: sortedData,
-			ascendingPrice: !this.state.ascendingPrice
+			ascendingPrice: !ascendingPrice
 		});
 	};
 
@@ -133,22 +127,24 @@ class PriceTable extends Component {
 	  самое простое что пришло в голову чтобы показать что понимаю работу с обьектами,
 	  и возможно еще рано но пришлось затронуть  использование - event
 	*/
-	togglePrice = e => {
+	togglePrice = () => {
 		const { priseList } = this.state;
 		if (priseList.length) {
 			const temp = [...priseList];
-			temp[0].data.price
-				? delete temp[0].data.price
-				: (temp[0].data.price = '$10/month');
-			e.target.innerText = temp[0].data.price
-				? 'Удалить елемент обьекта'
-				: 'Добавить елемент обьекта';
-			this.setState({ priseList: temp });
+			if (temp[0].data.price) {
+				delete temp[0].data.price;
+			} else {
+				temp[0].data.price = '$10/month';
+			}
+			const newText = temp[0].data.price
+				? 'Удалить элемент объекта'
+				: 'Добавить элемент объекта';
+			this.setState({ priseList: temp, buttonText: newText });
 		}
 	};
 
 	render() {
-		const { priseList } = this.state;
+		const { priseList, buttonText } = this.state;
 
 		return (
 			<>
@@ -175,11 +171,17 @@ class PriceTable extends Component {
 					</table>
 				</div>
 				<div className='button-group'>
-					<button onClick={this.sortData}>Сортировать по цене</button>
-					<button onClick={this.addElement}>Добавить</button>
-					<button onClick={this.removeElement}>Удалить</button>
-					<button onClick={this.togglePrice}>
-						Удалить елемент обьекта
+					<button type='button' onClick={this.sortData}>
+						Сортировать по цене
+					</button>
+					<button type='button' onClick={this.addElement}>
+						Добавить
+					</button>
+					<button type='button' onClick={this.removeElement}>
+						Удалить
+					</button>
+					<button type='button' onClick={this.togglePrice}>
+						{buttonText}
 					</button>
 				</div>
 			</>

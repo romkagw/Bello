@@ -25,8 +25,7 @@ class Home extends Component {
 				},
 				{
 					title: 'Term vs. perm',
-					textCard:
-						'Term vs. whole life insurance. Which is best for you?',
+					textCard: 'Term vs. whole life insurance. Which is best for you?',
 					textLink: 'See the winner'
 				},
 				{
@@ -42,16 +41,15 @@ class Home extends Component {
 			],
 			isModalShow: false
 		};
+		const { card } = this.state;
 
-		this.cards = this.state.card.map(
-			({ title, textCard, textLink }, index) => (
-				<Card className={`card${index + 1}`} key={title}>
-					<h4>{title}</h4>
-					<p>{textCard}</p>
-					<ArrowButton>{textLink}</ArrowButton>
-				</Card>
-			)
-		);
+		this.cards = card.map(({ title, textCard, textLink }, index) => (
+			<Card className={`card${index + 1}`} key={title}>
+				<h4>{title}</h4>
+				<p>{textCard}</p>
+				<ArrowButton>{textLink}</ArrowButton>
+			</Card>
+		));
 	}
 
 	openModal = () => {
@@ -63,12 +61,10 @@ class Home extends Component {
 	};
 
 	render() {
+		const { isModalShow } = this.state;
 		return (
 			<>
-				<Modal
-					isShow={this.state.isModalShow}
-					onClose={this.closeModal}
-				>
+				<Modal isShow={isModalShow} onClose={this.closeModal}>
 					<PriceTable />
 				</Modal>
 
@@ -84,6 +80,7 @@ class Home extends Component {
 									Log in
 								</a>
 								<button
+									type='button'
 									onClick={this.openModal}
 									className='get-price'
 									href='/#'
@@ -101,7 +98,7 @@ class Home extends Component {
 									<h4>MEET BELLO</h4>
 									<h1>A new kind of life insurance</h1>
 									<p>
-										Secure your family's financial future,
+										Secure your family&apos;s financial future,
 										<br />
 										in as little as 10 minutes.
 									</p>
@@ -112,7 +109,7 @@ class Home extends Component {
 										Get my price
 									</ArrowButton>
 								</div>
-								<div className='promo-image'></div>
+								<div className='promo-image' />
 							</div>
 						</div>
 					</section>
@@ -123,11 +120,9 @@ class Home extends Component {
 						<div className='container'>
 							<div className='stats-block'>
 								<div className='image-stats'>
-									<div></div>
+									<div />
 									<p>
-										<span style={{ color: '#f46752' }}>
-											*
-										</span>
+										<span style={{ color: '#f46752' }}>*</span>
 										Data for illustrative purposes
 									</p>
 								</div>
@@ -135,9 +130,8 @@ class Home extends Component {
 									<h5>Secure your future</h5>
 									<h2>It’s more affordable than you think</h2>
 									<p>
-										Life insurance shouldn’t be confusing or
-										expensive. Bello’s term life insurance
-										makes protecting your loved ones easy
+										Life insurance shouldn’t be confusing or expensive. Bello’s
+										term life insurance makes protecting your loved ones easy
 										and affordable.
 									</p>
 									<ArrowButton onClick={this.openModal}>
@@ -153,15 +147,14 @@ class Home extends Component {
 							<div className='help-block'>
 								<div className='help-content'>
 									<h5>Technology meets service</h5>
-									<h3>We're here to help</h3>
+									<h3>We&apos;re here to help</h3>
 									<p>
-										Bella, our smart bot, can guide you to
-										your perfect policy. There’s also human
-										help whenever you need it.
+										Bella, our smart bot, can guide you to your perfect policy.
+										There’s also human help whenever you need it.
 									</p>
 									<ArrowButton>Get help</ArrowButton>
 								</div>
-								<div className='help-image'></div>
+								<div className='help-image' />
 							</div>
 						</div>
 					</section>
@@ -172,10 +165,9 @@ class Home extends Component {
 								<h5>Top-Rated Term Life Insurance</h5>
 								<h3>You’re in safe hands</h3>
 								<p>
-									We've partnered with, [insert underwriter],
-									one of the world’s largest, most trusted
-									insurance companies. This means we can
-									ensure reliability in paying Claims.
+									We&apos;ve partnered with, [insert underwriter], one of the
+									world’s largest, most trusted insurance companies. This means
+									we can ensure reliability in paying Claims.
 								</p>
 							</div>
 							<div className='cards'>
@@ -187,8 +179,7 @@ class Home extends Component {
 									/>
 									<h6>Top-Rated</h6>
 									<p>
-										A+ Financial Strength Rating by A.M.
-										Best.
+										A+ Financial Strength Rating by A.M. Best.
 										<a href='/#'>What does this mean?</a>
 									</p>
 								</div>
@@ -200,8 +191,8 @@ class Home extends Component {
 									/>
 									<h6>Expert guidance</h6>
 									<p>
-										We've placed millions of dollars in
-										coverage people nationwide.
+										We&apos;ve placed millions of dollars in coverage people
+										nationwide.
 									</p>
 								</div>
 
@@ -213,8 +204,8 @@ class Home extends Component {
 									/>
 									<h6>We care</h6>
 									<p>
-										We care about you. We’re a 5 star
-										insurance company. Well… Close enough!
+										We care about you. We’re a 5 star insurance company. Well…
+										Close enough!
 									</p>
 								</div>
 							</div>
@@ -226,25 +217,16 @@ class Home extends Component {
 								<h5>How it works</h5>
 								<h4>Affordable life insurance in minutes</h4>
 								<p>
-									We use technology to save you time and money
-									– no pushy sales agents, paperwork, or extra
-									fees. Just a few clicks and you’re done.
+									We use technology to save you time and money – no pushy sales
+									agents, paperwork, or extra fees. Just a few clicks and you’re
+									done.
 								</p>
 							</div>
 							<div className='instruction-content'>
 								<div className='block-circle'>
-									<img
-										src='./images/circle.svg'
-										alt='circle'
-									/>
-									<img
-										src='./images/circle.svg'
-										alt='circle'
-									/>
-									<img
-										src='./images/circle.svg'
-										alt='circle'
-									/>
+									<img src='./images/circle.svg' alt='circle' />
+									<img src='./images/circle.svg' alt='circle' />
+									<img src='./images/circle.svg' alt='circle' />
 								</div>
 								<div className='content-list'>
 									<img src='./images/1.svg' alt='1' />
@@ -254,24 +236,17 @@ class Home extends Component {
 									<h6>Apply</h6>
 									<h6>You’re Covered</h6>
 									<p>
-										Choose the amount that you would like to
-										be covered for and we’ll give you a
-										quote.
+										Choose the amount that you would like to be covered for and
+										we’ll give you a quote.
 									</p>
+									<p>Answer a few questions and get your final price.</p>
 									<p>
-										Answer a few questions and get your
-										final price.
-									</p>
-									<p>
-										Congratulations on securing your loved
-										ones financial future!
+										Congratulations on securing your loved ones financial
+										future!
 									</p>
 								</div>
 							</div>
-							<ArrowButton
-								onClick={this.openModal}
-								className='get-my-price'
-							>
+							<ArrowButton onClick={this.openModal} className='get-my-price'>
 								Get my price
 							</ArrowButton>
 						</div>
@@ -280,21 +255,16 @@ class Home extends Component {
 					<section id='learning-center'>
 						<div className='container'>
 							<div className='learning-center-block'>
-								<div className='learning-center-image'></div>
+								<div className='learning-center-image' />
 								<div className='learning-center-content'>
-									<h5>You've Got This</h5>
-									<h3>
-										Everything you need— completely free
-									</h3>
+									<h5>You&apos;ve Got This</h5>
+									<h3>Everything you need— completely free</h3>
 									<p>
-										Here’s the latest info, guides, and,
-										helpful tools, from the Bello team.
-										Learn about life insurance, finances,
-										health and wellness.
+										Here’s the latest info, guides, and, helpful tools, from the
+										Bello team. Learn about life insurance, finances, health and
+										wellness.
 									</p>
-									<ArrowButton>
-										Visit Learning Center
-									</ArrowButton>
+									<ArrowButton>Visit Learning Center</ArrowButton>
 								</div>
 							</div>
 						</div>
@@ -311,13 +281,10 @@ class Home extends Component {
 							<div className='get-started-content'>
 								<h3>Get Started Today.</h3>
 								<p>
-									Join the Bello community of people who are
-									securing their financial future.
+									Join the Bello community of people who are securing their
+									financial future.
 								</p>
-								<ArrowButton
-									onClick={this.openModal}
-									className='get-my-price'
-								>
+								<ArrowButton onClick={this.openModal} className='get-my-price'>
 									Get my price
 								</ArrowButton>
 							</div>
@@ -332,43 +299,27 @@ class Home extends Component {
 								<div className='social-media'>
 									<img src='./images/logo.png' alt='logo' />
 									<p>
-										Bello is a trading name of Bello
-										Insurance Services LLC. Bello policies
-										are issued by [Insert Underwriter here].
+										Bello is a trading name of Bello Insurance Services LLC.
+										Bello policies are issued by [Insert Underwriter here].
 									</p>
 									<div>
 										<input type='text' />
 										<ArrowButton>Go</ArrowButton>
 									</div>
 									<div id='card-social'>
-										<a
-											title='facebook'
-											href='https://www.facebook.com/'
-										>
+										<a title='facebook' href='https://www.facebook.com/'>
 											<FaFacebookF />
 										</a>
-										<a
-											title='instagram'
-											href='https://www.instagram.com/'
-										>
+										<a title='instagram' href='https://www.instagram.com/'>
 											<FaInstagram />
 										</a>
-										<a
-											title='youtube'
-											href='https://www.youtube.com/'
-										>
+										<a title='youtube' href='https://www.youtube.com/'>
 											<FaYoutube />
 										</a>
-										<a
-											title='linkedin'
-											href='https://www.linkedin.com/'
-										>
+										<a title='linkedin' href='https://www.linkedin.com/'>
 											<FaLinkedinIn />
 										</a>
-										<a
-											title='tiktok'
-											href='https://www.tiktok.com/'
-										>
+										<a title='tiktok' href='https://www.tiktok.com/'>
 											<FaTiktok />
 										</a>
 									</div>
@@ -397,11 +348,8 @@ class Home extends Component {
 					<div id='footer-lower'>
 						<div className='container'>
 							<div>
-								<p>
-									© 2020 Bello insurance Services LLC. All
-									right reserved.
-								</p>
-								<button onClick={this.openModal}>
+								<p>© 2020 Bello insurance Services LLC. All right reserved.</p>
+								<button type='button' onClick={this.openModal}>
 									Get my price
 								</button>
 							</div>

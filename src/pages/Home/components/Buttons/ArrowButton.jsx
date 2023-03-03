@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as ArrowPointer } from '../../assets/images/Arrow.svg';
+import { ReactComponent as ArrowPointer } from '../../../../assets/images/Arrow.svg';
 
 class ArrowButton extends React.Component {
 	render() {
@@ -15,11 +15,12 @@ class ArrowButton extends React.Component {
 }
 
 ArrowButton.propTypes = {
-	onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
 	className: PropTypes.string,
 	children: PropTypes.node
 };
 ArrowButton.defaultProps = {
+	onClick: null,
 	className: '',
 	children: null
 };

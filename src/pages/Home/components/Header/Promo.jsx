@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showModal } from '../../../../store/modules/Modal/reducer';
 import ArrowButton from '../Buttons/ArrowButton';
 
 class Promo extends React.Component {
 	render() {
+		const { dispatch } = this.props;
 		return (
 			<section className='promo'>
 				<div className='container'>
@@ -15,7 +19,10 @@ class Promo extends React.Component {
 								<br />
 								in as little as 10 minutes.
 							</p>
-							<ArrowButton onClick={this.openModal} className='get-my-price'>
+							<ArrowButton
+								onClick={() => dispatch(showModal())}
+								className='get-my-price'
+							>
 								Get my price
 							</ArrowButton>
 						</div>
@@ -26,5 +33,8 @@ class Promo extends React.Component {
 		);
 	}
 }
+Promo.propTypes = {
+	dispatch: PropTypes.func.isRequired
+};
 
-export default Promo;
+export default connect()(Promo);

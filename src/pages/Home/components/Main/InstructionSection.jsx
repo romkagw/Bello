@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showModal } from '../../../../store/modules/Modal/reducer';
 import ArrowButton from '../Buttons/ArrowButton';
 import circle from '../../../../assets/images/circle.svg';
 import oneNumber from '../../../../assets/images/1.svg';
@@ -7,6 +10,8 @@ import threeHumber from '../../../../assets/images/3.svg';
 
 class InstructionSection extends React.Component {
 	render() {
+		const { dispatch } = this.props;
+
 		return (
 			<section id='instruction'>
 				<div className='container'>
@@ -42,7 +47,10 @@ class InstructionSection extends React.Component {
 							</p>
 						</div>
 					</div>
-					<ArrowButton onClick={this.openModal} className='get-my-price'>
+					<ArrowButton
+						onClick={() => dispatch(showModal())}
+						className='get-my-price'
+					>
 						Get my price
 					</ArrowButton>
 				</div>
@@ -50,4 +58,7 @@ class InstructionSection extends React.Component {
 		);
 	}
 }
-export default InstructionSection;
+InstructionSection.propTypes = {
+	dispatch: PropTypes.func.isRequired
+};
+export default connect()(InstructionSection);

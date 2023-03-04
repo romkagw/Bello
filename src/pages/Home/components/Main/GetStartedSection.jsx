@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showModal } from '../../../../store/modules/Modal/reducer';
 import ArrowButton from '../Buttons/ArrowButton';
 
 class GetStartedSection extends Component {
 	render() {
+		const { dispatch } = this.props;
 		return (
 			<section id='get-started'>
 				<div className='container'>
@@ -12,12 +16,20 @@ class GetStartedSection extends Component {
 							Join the Bello community of people who are securing their
 							financial future.
 						</p>
-						<ArrowButton className='get-my-price'>Get my price</ArrowButton>
+						<ArrowButton
+							onClick={() => dispatch(showModal())}
+							className='get-my-price'
+						>
+							Get my price
+						</ArrowButton>
 					</div>
 				</div>
 			</section>
 		);
 	}
 }
+GetStartedSection.propTypes = {
+	dispatch: PropTypes.func.isRequired
+};
 
-export default GetStartedSection;
+export default connect()(GetStartedSection);

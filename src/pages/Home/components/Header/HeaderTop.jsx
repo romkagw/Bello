@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import LoginButton from '../Buttons/LoginButton';
 import logo from '../../../../assets/images/logo.png';
+import { showModal } from '../../../../store/modules/Modal/reducer';
 
 class HeaderTop extends React.Component {
 	render() {
+		const { dispatch } = this.props;
+
 		return (
 			<div className='header-top'>
 				<div className='header-container'>
@@ -15,7 +20,7 @@ class HeaderTop extends React.Component {
 						<LoginButton />
 						<button
 							type='button'
-							onClick={this.openModal}
+							onClick={() => dispatch(showModal())}
 							className='get-price'
 							href='/#'
 						>
@@ -27,5 +32,8 @@ class HeaderTop extends React.Component {
 		);
 	}
 }
+HeaderTop.propTypes = {
+	dispatch: PropTypes.func.isRequired
+};
 
-export default HeaderTop;
+export default connect()(HeaderTop);

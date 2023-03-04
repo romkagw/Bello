@@ -4,6 +4,8 @@ import './home.scss';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
+import PriceTable from './components/PriceTable/PriceTable';
+import Modal from './components/Modal/Modal';
 
 class Home extends Component {
 	render() {
@@ -12,6 +14,9 @@ class Home extends Component {
 				<Header />
 				<Main />
 				<Footer />
+				<Modal>
+					<PriceTable />
+				</Modal>
 			</>
 		);
 	}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ArrowButton from '../Buttons/ArrowButton';
-import Card from '../Card/Card';
+import Card from '../Cards/Card';
 
 class CardSection extends Component {
 	constructor(props) {

@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { showModal } from '../../../../store/modules/Modal/reducer';
 import ArrowButton from '../Buttons/ArrowButton';
 
 class StatsSection extends React.Component {
 	render() {
+		const { dispatch } = this.props;
 		return (
 			<section id='stats'>
 				<div className='container'>
@@ -22,7 +26,9 @@ class StatsSection extends React.Component {
 								life insurance makes protecting your loved ones easy and
 								affordable.
 							</p>
-							<ArrowButton onClick={this.openModal}>Get My Price</ArrowButton>
+							<ArrowButton onClick={() => dispatch(showModal())}>
+								Get My Price
+							</ArrowButton>
 						</div>
 					</div>
 				</div>
@@ -30,5 +36,7 @@ class StatsSection extends React.Component {
 		);
 	}
 }
-
-export default StatsSection;
+StatsSection.propTypes = {
+	dispatch: PropTypes.func.isRequired
+};
+export default connect()(StatsSection);

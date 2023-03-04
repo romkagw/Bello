@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
+import { connect } from 'react-redux';
+import { hideModal } from '../../../../store/modules/Modal/reducer';
 
 class Modal extends Component {
 	render() {
-		const { isShow, onClose, children } = this.props;
+		const { children, dispatch, isModalVisible } = this.props;
 		return (
 			<div>
-				{isShow && (
+				{isModalVisible && (
 					<div className='modal'>
 						<div className='modal-content'>
-							<button type='button' className='close' onClick={onClose}>
+							<button
+								type='button'
+								className='close'
+								onClick={() => dispatch(hideModal())}
+							>
 								×
 							</button>
 							{children}
@@ -23,9 +29,15 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-	isShow: PropTypes.bool.isRequired,
-	onClose: PropTypes.func.isRequired,
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	dispatch: PropTypes.func.isRequired,
+	isModalVisible: PropTypes.bool.isRequired
 };
 
-export default Modal;
+const mapStateToProps = state => {
+	return {
+		isModalVisible: state.modal.isModalVisible
+	};
+};
+
+export default connect(mapStateToProps)(Modal);

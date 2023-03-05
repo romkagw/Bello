@@ -1,5 +1,5 @@
 import React from 'react';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 
 class HelpSection extends React.Component {
 	render() {
@@ -14,7 +14,7 @@ class HelpSection extends React.Component {
 								Bella, our smart bot, can guide you to your perfect policy.
 								There’s also human help whenever you need it.
 							</p>
-							<ArrowButton>Get help</ArrowButton>
+							<Button arrowPointer>Get help</Button>
 						</div>
 						<div className='help-image' />
 					</div>

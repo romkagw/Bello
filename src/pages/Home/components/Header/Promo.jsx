@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../store/modules/Modal/reducer';
-import ArrowButton from '../Buttons/ArrowButton';
+import Button from '../Button/Button';
 
 class Promo extends React.Component {
 	render() {
@@ -19,12 +19,13 @@ class Promo extends React.Component {
 								<br />
 								in as little as 10 minutes.
 							</p>
-							<ArrowButton
-								onClick={() => dispatch(showModal())}
+							<Button
 								className='get-my-price'
+								onClick={() => dispatch(showModal())}
+								arrowPointer
 							>
 								Get my price
-							</ArrowButton>
+							</Button>
 						</div>
 						<div className='promo-image' />
 					</div>

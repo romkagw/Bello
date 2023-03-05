@@ -2,27 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ReactComponent as ArrowPointer } from '../../../../assets/images/Arrow.svg';
 
-class ArrowButton extends React.Component {
+class Button extends React.Component {
 	render() {
-		const { onClick, className, children } = this.props;
+		const { onClick, className, children, arrowPointer } = this.props;
 
 		return (
 			<button type='button' onClick={onClick} className={className}>
-				{children} <ArrowPointer />
+				{children} {arrowPointer && <ArrowPointer />}
 			</button>
 		);
 	}
 }
 
-ArrowButton.propTypes = {
+Button.propTypes = {
 	onClick: PropTypes.func,
 	className: PropTypes.string,
-	children: PropTypes.node
+	children: PropTypes.node.isRequired,
+	arrowPointer: PropTypes.bool
 };
-ArrowButton.defaultProps = {
+Button.defaultProps = {
 	onClick: null,
 	className: '',
-	children: null
+	arrowPointer: false
 };
 
-export default ArrowButton;
+export default Button;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 
 class LearningCenterSection extends Component {
 	render() {
@@ -16,7 +16,7 @@ class LearningCenterSection extends Component {
 								Bello team. Learn about life insurance, finances, health and
 								wellness.
 							</p>
-							<ArrowButton>Visit Learning Center</ArrowButton>
+							<Button arrowPointer>Visit Learning Center</Button>
 						</div>
 					</div>
 				</div>

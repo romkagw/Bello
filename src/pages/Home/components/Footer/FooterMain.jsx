@@ -6,8 +6,8 @@ import {
 	FaLinkedinIn,
 	FaTiktok
 } from 'react-icons/fa';
-import ArrowButton from '../Buttons/ArrowButton';
 import logo from '../../../../assets/images/logo.png';
+import Button from '../Button/Button';
 
 class FooterMain extends Component {
 	render() {
@@ -23,7 +23,7 @@ class FooterMain extends Component {
 							</p>
 							<div>
 								<input type='text' />
-								<ArrowButton>Go</ArrowButton>
+								<Button arrowPointer>Go</Button>
 							</div>
 							<div id='card-social'>
 								<a title='facebook' href='https://www.facebook.com/'>

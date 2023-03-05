@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LoginButton from '../Buttons/LoginButton';
 import logo from '../../../../assets/images/logo.png';
 import { showModal } from '../../../../store/modules/Modal/reducer';
+import Button from '../Button/Button';
 
 class HeaderTop extends React.Component {
 	render() {
@@ -17,15 +17,10 @@ class HeaderTop extends React.Component {
 					<a href='/#'>Why Bello</a>
 					<a href='/#'>Help</a>
 					<div className='buttons-header'>
-						<LoginButton />
-						<button
-							type='button'
-							onClick={() => dispatch(showModal())}
-							className='get-price'
-							href='/#'
-						>
+						<Button className='log-in'>Log in</Button>
+						<Button className='get-price' onClick={() => dispatch(showModal())}>
 							Get my price
-						</button>
+						</Button>
 					</div>
 				</div>
 			</div>

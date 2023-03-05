@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 
 class StatsSection extends React.Component {
 	render() {
@@ -26,9 +26,9 @@ class StatsSection extends React.Component {
 								life insurance makes protecting your loved ones easy and
 								affordable.
 							</p>
-							<ArrowButton onClick={() => dispatch(showModal())}>
+							<Button arrowPointer onClick={() => dispatch(showModal())}>
 								Get My Price
-							</ArrowButton>
+							</Button>
 						</div>
 					</div>
 				</div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 
 class GetStartedSection extends Component {
 	render() {
@@ -16,12 +16,13 @@ class GetStartedSection extends Component {
 							Join the Bello community of people who are securing their
 							financial future.
 						</p>
-						<ArrowButton
-							onClick={() => dispatch(showModal())}
+						<Button
 							className='get-my-price'
+							onClick={() => dispatch(showModal())}
+							arrowPointer
 						>
 							Get my price
-						</ArrowButton>
+						</Button>
 					</div>
 				</div>
 			</section>

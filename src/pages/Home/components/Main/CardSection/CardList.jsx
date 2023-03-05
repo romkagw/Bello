@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 
 class CardList extends React.Component {
 	constructor(props) {
@@ -87,7 +87,7 @@ class CardList extends React.Component {
 					>
 						<h4>{card.title}</h4>
 						<p>{card.textCard}</p>
-						<ArrowButton>{card.textLink}</ArrowButton>
+						<Button arrowPointer>{card.textLink}</Button>
 					</Card>
 				))}
 			</div>

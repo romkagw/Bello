@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import ArrowButton from '../../Buttons/ArrowButton';
+import Button from '../../Button/Button';
 import circle from '../../../../../assets/images/circle.svg';
 import oneNumber from '../../../../../assets/images/1.svg';
 import twoNumber from '../../../../../assets/images/2.svg';
@@ -47,12 +47,13 @@ class InstructionSection extends React.Component {
 							</p>
 						</div>
 					</div>
-					<ArrowButton
-						onClick={() => dispatch(showModal())}
+					<Button
 						className='get-my-price'
+						onClick={() => dispatch(showModal())}
+						arrowPointer
 					>
 						Get my price
-					</ArrowButton>
+					</Button>
 				</div>
 			</section>
 		);

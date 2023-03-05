@@ -1,6 +1,12 @@
+.hide {
+	opacity: 0;
+}
 .boards {
 	width: 260px;
 	height: 323px;
+	transition: 1s;
+	cursor: move;
+
 	> * {
 		margin-left: 22px;
 		font-family: 'Work Sans';
@@ -9,7 +15,7 @@
 }
 
 .boards h4 {
-	margin-top: 40px;
+	padding-top: 40px;
 	font-size: 34px;
 	line-height: 42px;
 	width: 150px;
@@ -41,7 +47,7 @@
 		height: 280px;
 	}
 	.boards h4 {
-		margin-top: 14px;
+		padding-top: 14px;
 		text-align: left;
 		font-size: 26px;
 		line-height: 27px;

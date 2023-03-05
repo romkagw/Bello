@@ -1,8 +1,8 @@
 import React from 'react';
-import TopRatedCard from '../Cards/TopRatedCard';
-import card1 from '../../../../assets/images/top-rated-1.svg';
-import card2 from '../../../../assets/images/top-rated-2.svg';
-import card3 from '../../../../assets/images/top-rated-3.svg';
+import TopRatedCard from './TopRatedCard';
+import card1 from '../../../../../assets/images/top-rated-1.svg';
+import card2 from '../../../../../assets/images/top-rated-2.svg';
+import card3 from '../../../../../assets/images/top-rated-3.svg';
 
 class TopRatedSection extends React.Component {
 	render() {

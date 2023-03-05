@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { showModal } from '../../../../store/modules/Modal/reducer';
-import ArrowButton from '../Buttons/ArrowButton';
+import { showModal } from '../../../../../store/modules/Modal/reducer';
+import ArrowButton from '../../Buttons/ArrowButton';
 
 class GetStartedSection extends Component {
 	render() {

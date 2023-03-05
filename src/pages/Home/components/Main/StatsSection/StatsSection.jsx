@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { showModal } from '../../../../store/modules/Modal/reducer';
-import ArrowButton from '../Buttons/ArrowButton';
+import { showModal } from '../../../../../store/modules/Modal/reducer';
+import ArrowButton from '../../Buttons/ArrowButton';
 
 class StatsSection extends React.Component {
 	render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArrowButton from '../Buttons/ArrowButton';
+import ArrowButton from '../../Buttons/ArrowButton';
 
 class LearningCenterSection extends Component {
 	render() {

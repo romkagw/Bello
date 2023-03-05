@@ -1,5 +1,5 @@
 import React from 'react';
-import ArrowButton from '../Buttons/ArrowButton';
+import ArrowButton from '../../Buttons/ArrowButton';
 
 class HelpSection extends React.Component {
 	render() {

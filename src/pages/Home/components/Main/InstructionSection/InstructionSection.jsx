@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { showModal } from '../../../../store/modules/Modal/reducer';
-import ArrowButton from '../Buttons/ArrowButton';
-import circle from '../../../../assets/images/circle.svg';
-import oneNumber from '../../../../assets/images/1.svg';
-import twoNumber from '../../../../assets/images/2.svg';
-import threeHumber from '../../../../assets/images/3.svg';
+import { showModal } from '../../../../../store/modules/Modal/reducer';
+import ArrowButton from '../../Buttons/ArrowButton';
+import circle from '../../../../../assets/images/circle.svg';
+import oneNumber from '../../../../../assets/images/1.svg';
+import twoNumber from '../../../../../assets/images/2.svg';
+import threeHumber from '../../../../../assets/images/3.svg';
 
 class InstructionSection extends React.Component {
 	render() {

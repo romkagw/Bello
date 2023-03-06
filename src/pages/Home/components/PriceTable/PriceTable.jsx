@@ -47,9 +47,32 @@ class PriceTable extends Component {
 					}
 				}
 			],
-			ascendingPrice: true
+			ascendingPrice: true,
+			active: false
 		};
 	}
+
+	componentDidMount() {
+		document.addEventListener('keydown', this.handleTableActivation);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleTableActivation);
+	}
+
+	handleTableActivation = e => {
+		if (e.code === 'Space') {
+			e.preventDefault();
+
+			const { active } = this.state;
+			const table = document.querySelector('.table-container');
+
+			if (!active) table.classList.add('active');
+			else table.classList.remove('active');
+
+			this.setState(prevState => ({ active: !prevState.active }));
+		}
+	};
 
 	/*
         Функция для того чтобы вернуть числовое значение из строки,

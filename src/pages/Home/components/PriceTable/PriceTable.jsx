@@ -47,8 +47,7 @@ class PriceTable extends Component {
 					}
 				}
 			],
-			ascendingPrice: true,
-			buttonText: 'Удалить елемент обьекта'
+			ascendingPrice: true
 		};
 	}
 
@@ -60,30 +59,6 @@ class PriceTable extends Component {
 		const match = price.match(/\d+/);
 		return match ? +match[0] : 0;
 	};
-
-	/*
-         Проходимся циклом по елементам и сравниваем каждый елемент с каждым
-         и в зависимости от того какое значение у ascendingPrice выбираем условие 
-         и меняем местами переменные  
-     */
-	// customSortData = () => {
-	// 	const { priseList, ascendingPrice } = this.state;
-	// 	const copyData = [...priseList]; // копируем массив чтобы не менять оригинальный
-	// 	for (let i = 0; i < copyData.length; i += 1) {
-	// 		for (let j = i + 1; j < copyData.length; j += 1) {
-	// 			const priceA = this.formatPrice(copyData[i].data.price);
-	// 			const priceB = this.formatPrice(copyData[j].data.price);
-	// 			if (ascendingPrice ? priceA > priceB : priceA < priceB) {
-	// 				[copyData[i], copyData[j]] = [copyData[j], copyData[i]];
-	// 			}
-	// 		}
-	// 	}
-	// 	// обновляем стейт
-	// 	this.setState({
-	// 		priseList: copyData,
-	// 		ascendingPrice: !ascendingPrice
-	// 	});
-	// };
 
 	sortData = () => {
 		const { priseList, ascendingPrice } = this.state;
@@ -101,50 +76,8 @@ class PriceTable extends Component {
 		});
 	};
 
-	addElement = () => {
-		const { priseList } = this.state;
-		const obj = {
-			id: priseList.length + 1,
-			data: {
-				name: 'Lorem',
-				description: 'Lorem ipsum dolor sit amet consectetur.',
-				price: '$----/month'
-			}
-		};
-		this.setState({ priseList: [...priseList, obj] });
-	};
-
-	removeElement = () => {
-		const { priseList } = this.state;
-		if (priseList.length) {
-			const newData = priseList.slice(0, -1);
-			this.setState({ priseList: newData });
-		}
-	};
-
-	/*
-	  Функция которая удаляет или добавляет поле - price в первом ряду,
-	  самое простое что пришло в голову чтобы показать что понимаю работу с обьектами,
-	  и возможно еще рано но пришлось затронуть  использование - event
-	*/
-	togglePrice = () => {
-		const { priseList } = this.state;
-		if (priseList.length) {
-			const temp = [...priseList];
-			if (temp[0].data.price) {
-				delete temp[0].data.price;
-			} else {
-				temp[0].data.price = '$10/month';
-			}
-			const newText = temp[0].data.price
-				? 'Удалить элемент объекта'
-				: 'Добавить элемент объекта';
-			this.setState({ priseList: temp, buttonText: newText });
-		}
-	};
-
 	render() {
-		const { priseList, buttonText } = this.state;
+		const { priseList } = this.state;
 
 		return (
 			<>
@@ -173,15 +106,6 @@ class PriceTable extends Component {
 				<div className='button-group'>
 					<button type='button' onClick={this.sortData}>
 						Сортировать по цене
-					</button>
-					<button type='button' onClick={this.addElement}>
-						Добавить
-					</button>
-					<button type='button' onClick={this.removeElement}>
-						Удалить
-					</button>
-					<button type='button' onClick={this.togglePrice}>
-						{buttonText}
 					</button>
 				</div>
 			</>

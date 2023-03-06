@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from '../../../../../components/Image/Image';
 
 class TopRatedCard extends React.Component {
 	render() {
@@ -7,7 +8,7 @@ class TopRatedCard extends React.Component {
 
 		return (
 			<div className={`card-${classNumber}`}>
-				<img
+				<Image
 					className={`img-top-rated${classNumber}`}
 					src={imgSrc}
 					alt={title}

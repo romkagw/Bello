@@ -7,6 +7,7 @@ import {
 	FaTiktok
 } from 'react-icons/fa';
 import logo from '../../../../assets/images/logo.png';
+import Image from '../../../../components/Image/Image';
 import Button from '../Button/Button';
 
 class FooterMain extends Component {
@@ -16,7 +17,7 @@ class FooterMain extends Component {
 				<div className='container'>
 					<div className='footer-content'>
 						<div className='social-media'>
-							<img src={logo} alt='logo' />
+							<Image src={logo} alt='logo' />
 							<p>
 								Bello is a trading name of Bello Insurance Services LLC. Bello
 								policies are issued by [Insert Underwriter here].

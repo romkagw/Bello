@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import logo from '../../../../assets/images/logo.png';
 import { showModal } from '../../../../store/modules/Modal/reducer';
 import Button from '../Button/Button';
+import Image from '../../../../components/Image/Image';
 
 class HeaderTop extends React.Component {
 	render() {
@@ -12,7 +13,7 @@ class HeaderTop extends React.Component {
 		return (
 			<div className='header-top'>
 				<div className='header-container'>
-					<img src={logo} alt='logo' />
+					<Image src={logo} alt='logo' />
 					<a href='/#'>Life insurance</a>
 					<a href='/#'>Why Bello</a>
 					<a href='/#'>Help</a>

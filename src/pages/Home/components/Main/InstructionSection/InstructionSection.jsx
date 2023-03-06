@@ -7,6 +7,7 @@ import circle from '../../../../../assets/images/circle.svg';
 import oneNumber from '../../../../../assets/images/1.svg';
 import twoNumber from '../../../../../assets/images/2.svg';
 import threeHumber from '../../../../../assets/images/3.svg';
+import Image from '../../../../../components/Image/Image';
 
 class InstructionSection extends React.Component {
 	render() {
@@ -26,14 +27,14 @@ class InstructionSection extends React.Component {
 					</div>
 					<div className='instruction-content'>
 						<div className='block-circle'>
-							<img src={circle} alt='circle' />
-							<img src={circle} alt='circle' />
-							<img src={circle} alt='circle' />
+							<Image src={circle} alt='circle' />
+							<Image src={circle} alt='circle' />
+							<Image src={circle} alt='circle' />
 						</div>
 						<div className='content-list'>
-							<img src={oneNumber} alt='1' />
-							<img src={twoNumber} alt='2' />
-							<img src={threeHumber} alt='3' />
+							<Image src={oneNumber} alt='1' />
+							<Image src={twoNumber} alt='2' />
+							<Image src={threeHumber} alt='3' />
 							<h6>Get My Price</h6>
 							<h6>Apply</h6>
 							<h6>You’re Covered</h6>

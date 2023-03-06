@@ -4,15 +4,11 @@ import Image from '../../../../../components/Image/Image';
 
 class TopRatedCard extends React.Component {
 	render() {
-		const { imgSrc, title, children, classNumber } = this.props;
+		const { imgSrc, title, children, className } = this.props;
 
 		return (
-			<div className={`card-${classNumber}`}>
-				<Image
-					className={`img-top-rated${classNumber}`}
-					src={imgSrc}
-					alt={title}
-				/>
+			<div className={className}>
+				<Image src={imgSrc} alt={title} />
 				<h6>{title}</h6>
 				<p>{children}</p>
 			</div>
@@ -24,7 +20,7 @@ TopRatedCard.propTypes = {
 	imgSrc: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
-	classNumber: PropTypes.string.isRequired
+	className: PropTypes.string.isRequired
 };
 
 export default TopRatedCard;

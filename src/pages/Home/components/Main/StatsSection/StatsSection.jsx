@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import Button from '../../Button/Button';
+import Button from '../../../../../components/Button/Button';
 
 class StatsSection extends React.Component {
 	render() {
@@ -14,7 +14,7 @@ class StatsSection extends React.Component {
 						<div className='image-stats'>
 							<div />
 							<p>
-								<span style={{ color: '#f46752' }}>*</span>
+								<span>*</span>
 								Data for illustrative purposes
 							</p>
 						</div>

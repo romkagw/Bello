@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import Button from '../../Button/Button';
+import Button from '../../../../../components/Button/Button';
 
 class GetStartedSection extends Component {
 	render() {

@@ -6,8 +6,8 @@ import {
 	FaLinkedinIn,
 	FaTiktok
 } from 'react-icons/fa';
-import logo from '../../../../assets/images/logo.png';
-import Image from '../../../../components/Image/Image';
+import logo from '../../assets/images/logo.png';
+import Image from '../Image/Image';
 import Button from '../Button/Button';
 
 class FooterMain extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
 import { connect } from 'react-redux';
-import { hideModal } from '../../../../store/modules/Modal/reducer';
+import { hideModal } from '../../store/modules/Modal/reducer';
 
 class Modal extends Component {
 	render() {

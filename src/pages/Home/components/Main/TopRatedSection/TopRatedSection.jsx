@@ -19,18 +19,19 @@ class TopRatedSection extends React.Component {
 						</p>
 					</div>
 					<div className='cards'>
-						<TopRatedCard classNumber='1' imgSrc={card1} title='Top-Rated'>
-							A+ Financial Strength Rating by A.M. Best. What does this mean?
+						<TopRatedCard className='card-1' imgSrc={card1} title='Top-Rated'>
+							A+ Financial Strength Rating by A.M.Best.{' '}
+							<a href='/#'>What does this mean?</a>
 						</TopRatedCard>
 						<TopRatedCard
-							classNumber='2'
+							className='card-2'
 							imgSrc={card2}
 							title='Expert guidance'
 						>
 							We&apos;ve placed millions of dollars in coverage people
 							nationwide.
 						</TopRatedCard>
-						<TopRatedCard classNumber='3' imgSrc={card3} title='We care'>
+						<TopRatedCard className='card-3' imgSrc={card3} title='We care'>
 							We care about you. We’re a 5 star insurance company. Well… Close
 							enough!
 						</TopRatedCard>

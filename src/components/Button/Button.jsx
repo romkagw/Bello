@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ReactComponent as ArrowPointer } from '../../../../assets/images/Arrow.svg';
+import { ReactComponent as ArrowPointer } from '../../assets/images/Arrow.svg';
 
 class Button extends React.Component {
 	render() {

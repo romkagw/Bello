@@ -86,17 +86,17 @@ class PriceTable extends Component {
 	sortData = () => {
 		const { priseList, ascendingPrice } = this.state;
 
-		const sortedData = priseList.sort((a, b) => {
+		const sortedData = [...priseList].sort((a, b) => {
 			const priceA = this.formatPrice(a.data.price);
 			const priceB = this.formatPrice(b.data.price);
 
 			return ascendingPrice ? priceA - priceB : priceB - priceA;
 		});
 
-		this.setState({
+		this.setState(prevState => ({
 			priseList: sortedData,
-			ascendingPrice: !ascendingPrice
-		});
+			ascendingPrice: !prevState.ascendingPrice
+		}));
 	};
 
 	render() {

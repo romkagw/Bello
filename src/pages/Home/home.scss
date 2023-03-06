@@ -229,6 +229,10 @@ button {
 	color: #5a6482;
 }
 
+.image-stats span {
+	color: #f46752;
+}
+
 .text-content-stats-block {
 	width: 456px;
 	height: 310px;
@@ -388,15 +392,15 @@ h3 {
 	box-shadow: 0px 2px 40px rgb(0 0 0 / 4%);
 }
 
-.img-top-rated1 {
+.card-1 img {
 	margin-top: 70px;
 	margin-bottom: 15px;
 	margin-left: 50px;
 }
-.img-top-rated2 {
+.card-2 img {
 	margin-top: 30px;
 }
-.img-top-rated3 {
+.card-3 img {
 	margin-top: 44px;
 }
 .card-content h6 {
@@ -1238,7 +1242,7 @@ h3 {
 	.top > p {
 		width: 685px;
 	}
-	.img-top-rated3 {
+	.card-3 img {
 		width: 180px;
 		margin-top: 10px;
 	}
@@ -1251,10 +1255,10 @@ h3 {
 		line-height: 22px;
 	}
 
-	.img-top-rated1 {
+	.card-1 img {
 		margin-top: 34px;
 	}
-	.img-top-rated2 {
+	.card-2 img {
 		margin-top: 10px;
 	}
 
@@ -1483,7 +1487,7 @@ h3 {
 		line-height: 20px;
 	}
 
-	.img-top-rated3 {
+	.card-3 img {
 		width: 140px;
 		margin-top: 0px;
 	}
@@ -1491,7 +1495,7 @@ h3 {
 		width: 150px;
 		line-height: 18px;
 	}
-	.img-top-rated2 {
+	.card-2 img {
 		height: 113px;
 	}
 
@@ -1503,7 +1507,7 @@ h3 {
 		height: 200px;
 	}
 
-	.img-top-rated1 {
+	.card-1 img {
 		margin-top: 22px;
 	}
 
@@ -1758,7 +1762,7 @@ h3 {
 		width: 200px;
 		font-size: 14px;
 	}
-	.img-top-rated3 {
+	.card-3 img {
 		width: 200px;
 	}
 

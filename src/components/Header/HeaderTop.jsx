@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import logo from '../../../../assets/images/logo.png';
-import { showModal } from '../../../../store/modules/Modal/reducer';
+import logo from '../../assets/images/logo.png';
+import Image from '../Image/Image';
 import Button from '../Button/Button';
-import Image from '../../../../components/Image/Image';
+import { showModal } from '../../store/modules/Modal/reducer';
 
 class HeaderTop extends React.Component {
 	render() {

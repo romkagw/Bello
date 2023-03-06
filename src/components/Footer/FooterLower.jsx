@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { showModal } from '../../../../store/modules/Modal/reducer';
+import { showModal } from '../../store/modules/Modal/reducer';
 
 class FooterLower extends Component {
 	render() {

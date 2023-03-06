@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { showModal } from '../../../../store/modules/Modal/reducer';
+import { showModal } from '../../store/modules/Modal/reducer';
 import Button from '../Button/Button';
 
 class Promo extends React.Component {

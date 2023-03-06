@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showModal } from '../../../../../store/modules/Modal/reducer';
-import Button from '../../Button/Button';
+import Button from '../../../../../components/Button/Button';
 import circle from '../../../../../assets/images/circle.svg';
 import oneNumber from '../../../../../assets/images/1.svg';
 import twoNumber from '../../../../../assets/images/2.svg';

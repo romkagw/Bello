@@ -5,6 +5,21 @@ import { connect } from 'react-redux';
 import { hideModal } from '../../store/modules/Modal/reducer';
 
 class Modal extends Component {
+	componentDidMount() {
+		document.addEventListener('keydown', this.handleKeyDown);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.handleKeyDown);
+	}
+
+	handleKeyDown = event => {
+		if (event.keyCode === 27) {
+			const { dispatch } = this.props;
+			dispatch(hideModal());
+		}
+	};
+
 	render() {
 		const { children, dispatch, isModalVisible } = this.props;
 		return (

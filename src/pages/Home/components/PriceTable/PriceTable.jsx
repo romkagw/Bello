@@ -12,7 +12,8 @@ class PriceTable extends Component {
 						name: 'Basic',
 						description: 'Basic coverage with low premiums',
 						price: '$10/month'
-					}
+					},
+					active: false
 				},
 				{
 					id: 2,
@@ -20,7 +21,8 @@ class PriceTable extends Component {
 						name: 'Standard',
 						description: 'Standard coverage with reasonable premiums',
 						price: '$25/month'
-					}
+					},
+					active: false
 				},
 				{
 					id: 3,
@@ -28,7 +30,8 @@ class PriceTable extends Component {
 						name: 'Ultra',
 						description: 'All-inclusive coverage with the highest premiums',
 						price: '$100/month'
-					}
+					},
+					active: false
 				},
 				{
 					id: 4,
@@ -36,7 +39,8 @@ class PriceTable extends Component {
 						name: 'Premium',
 						description: 'Comprehensive coverage with high premiums',
 						price: '$50/month'
-					}
+					},
+					active: false
 				},
 				{
 					id: 5,
@@ -44,7 +48,8 @@ class PriceTable extends Component {
 						name: 'Custom',
 						description: 'Tailored coverage to fit your specific needs',
 						price: 'Varies'
-					}
+					},
+					active: false
 				}
 			],
 			ascendingPrice: true,
@@ -61,16 +66,35 @@ class PriceTable extends Component {
 	}
 
 	handleTableActivation = e => {
+		e.preventDefault();
+		const { active, priseList } = this.state;
 		if (e.code === 'Space') {
-			e.preventDefault();
-
-			const { active } = this.state;
 			const table = document.querySelector('.table-container');
-
 			if (!active) table.classList.add('active');
 			else table.classList.remove('active');
-
 			this.setState(prevState => ({ active: !prevState.active }));
+		}
+
+		if ((e.code === 'ArrowDown' || e.code === 'ArrowUp') && active) {
+			const tempPriseList = [...priseList];
+			let activeIndex = tempPriseList.findIndex(item => item.active);
+			if (activeIndex === -1) {
+				activeIndex = 0;
+			} else {
+				tempPriseList[activeIndex].active = false;
+
+				if (e.code === 'ArrowDown') {
+					activeIndex =
+						activeIndex < tempPriseList.length - 1 ? activeIndex + 1 : 0;
+				} else if (e.code === 'ArrowUp') {
+					activeIndex =
+						activeIndex > 0 ? activeIndex - 1 : tempPriseList.length - 1;
+				}
+			}
+
+			tempPriseList[activeIndex].active = true;
+
+			this.setState({ priseList: tempPriseList });
 		}
 	};
 
@@ -116,7 +140,7 @@ class PriceTable extends Component {
 						</thead>
 						<tbody>
 							{priseList.map((item, index) => (
-								<tr key={item.id}>
+								<tr className={item.active ? 'selected' : ''} key={item.id}>
 									<td>{index + 1}</td>
 									<td>{item.data.name}</td>
 									<td>{item.data.description}</td>

@@ -8,6 +8,7 @@
 	border-radius: 4px;
 	transition: 0.1s;
 }
+
 .table-container {
 	animation: fade-in 1s ease;
 	display: flex;
@@ -17,6 +18,24 @@
 	overflow: auto;
 	align-items: center;
 	width: 100%;
+
+	thead > tr > :last-child {
+		display: flex;
+	}
+
+	thead svg {
+		color: #fcfeff8e;
+		margin-left: 5px;
+		transition: 0.4s;
+
+		&:hover {
+			color: aliceblue;
+		}
+
+		&:active {
+			transform: scale(1.5);
+		}
+	}
 
 	table {
 		border-collapse: collapse;
@@ -60,10 +79,12 @@
 		}
 	}
 }
+
 .button-group {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	button {
 		background-color: #126f86;
 		color: #fff;
@@ -73,10 +94,10 @@
 		border-radius: 6px;
 		cursor: pointer;
 		font-size: 16px;
-	}
 
-	button:hover {
-		background-color: #2980b9;
+		&:hover {
+			background-color: #2980b9;
+		}
 	}
 }
 

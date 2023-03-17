@@ -16,7 +16,7 @@ class Image extends Component {
 			<img
 				src={src}
 				alt={alt}
-				onLoad={this.handleLoad(alt)}
+				onLoad={() => this.handleLoad(alt)}
 				onError={() => this.handleError(alt)}
 			/>
 		);

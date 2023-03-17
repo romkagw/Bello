@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	priseList: null,
+	priceList: null,
 	ascendingPrice: true,
 	active: false
 };
@@ -17,12 +17,12 @@ const PriseSlice = createSlice({
 		setAscendingPrice: state => {
 			state.ascendingPrice = !state.ascendingPrice;
 		},
-		addPriseList: (state, actions) => {
-			state.priseList = actions.payload;
+		addPriceList: (state, actions) => {
+			state.priceList = actions.payload;
 		}
 	}
 });
 
-export const { setActive, addPriseList, setAscendingPrice } =
+export const { setActive, addPriceList, setAscendingPrice } =
 	PriseSlice.actions;
 export default PriseSlice.reducer;

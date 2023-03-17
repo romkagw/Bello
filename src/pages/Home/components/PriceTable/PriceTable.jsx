@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FaSort } from 'react-icons/fa';
 import {
-	addPriseList,
+	addPriceList,
 	setActive,
 	setAscendingPrice
-} from '../../../../store/modules/PriseList/reducer';
+} from '../../../../store/modules/PriceList/reducer';
 import './priceTable.scss';
 
 class PriceTable extends Component {
@@ -20,7 +20,7 @@ class PriceTable extends Component {
 
 	handleTableActivation = e => {
 		e.preventDefault();
-		const { active, dispatch, priseList } = this.props;
+		const { active, dispatch, priceList } = this.props;
 		if (e.code === 'Space') {
 			const table = document.querySelector('.table-container');
 			if (!active) table.classList.add('active');
@@ -29,23 +29,23 @@ class PriceTable extends Component {
 		}
 
 		if ((e.code === 'ArrowDown' || e.code === 'ArrowUp') && active) {
-			const tempPriseList = JSON.parse(JSON.stringify(priseList));
-			let activeIndex = tempPriseList.findIndex(item => item.active);
+			const tempPriceList = JSON.parse(JSON.stringify(priceList));
+			let activeIndex = tempPriceList.findIndex(item => item.active);
 			if (activeIndex === -1) {
 				activeIndex = 0;
 			} else {
-				tempPriseList[activeIndex].active = false;
+				tempPriceList[activeIndex].active = false;
 
 				if (e.code === 'ArrowDown') {
 					activeIndex =
-						activeIndex < tempPriseList.length - 1 ? activeIndex + 1 : 0;
+						activeIndex < tempPriceList.length - 1 ? activeIndex + 1 : 0;
 				} else if (e.code === 'ArrowUp') {
 					activeIndex =
-						activeIndex > 0 ? activeIndex - 1 : tempPriseList.length - 1;
+						activeIndex > 0 ? activeIndex - 1 : tempPriceList.length - 1;
 				}
 			}
-			tempPriseList[activeIndex].active = true;
-			dispatch(addPriseList(tempPriseList));
+			tempPriceList[activeIndex].active = true;
+			dispatch(addPriceList(tempPriceList));
 		}
 	};
 
@@ -59,21 +59,21 @@ class PriceTable extends Component {
 	};
 
 	sortData = () => {
-		const { priseList, ascendingPrice, dispatch } = this.props;
+		const { priceList, ascendingPrice, dispatch } = this.props;
 
-		const sortedData = [...priseList].sort((a, b) => {
+		const sortedData = [...priceList].sort((a, b) => {
 			const priceA = this.formatPrice(a.data.price);
 			const priceB = this.formatPrice(b.data.price);
 
 			return !ascendingPrice ? priceA - priceB : priceB - priceA;
 		});
 
-		dispatch(addPriseList(sortedData));
+		dispatch(addPriceList(sortedData));
 		dispatch(setAscendingPrice());
 	};
 
 	render() {
-		const { priseList } = this.props;
+		const { priceList } = this.props;
 
 		return (
 			<div className='table-container'>
@@ -91,7 +91,7 @@ class PriceTable extends Component {
 					</thead>
 
 					<tbody>
-						{priseList.map((item, index) => (
+						{priceList.map((item, index) => (
 							<tr className={item.active ? 'selected' : ''} key={item.id}>
 								<td>{index + 1}</td>
 								<td>{item.data.name}</td>
@@ -109,7 +109,7 @@ class PriceTable extends Component {
 PriceTable.propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	active: PropTypes.bool.isRequired,
-	priseList: PropTypes.arrayOf(
+	priceList: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.number.isRequired,
 			data: PropTypes.shape({
@@ -125,7 +125,7 @@ PriceTable.propTypes = {
 const mapStateToProps = state => {
 	return {
 		active: state.prise.active,
-		priseList: state.prise.priseList,
+		priceList: state.prise.priceList,
 		ascendingPrice: state.prise.ascendingPrice
 	};
 };

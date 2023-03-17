@@ -8,17 +8,17 @@ import Footer from '../../components/Footer/Footer';
 import Modal from '../../components/Modal/Modal';
 import Main from './components/Main/Main';
 import PriceTable from './components/PriceTable/PriceTable';
-import { addPriseList } from '../../store/modules/PriseList/reducer';
+import { addPriceList } from '../../store/modules/PriceList/reducer';
 import fetchData from '../../api/api';
 
 class Home extends Component {
 	componentDidMount() {
-		const fetchPriseList = async () => {
+		const fetchPriceList = async () => {
 			const { dispatch } = this.props;
 			const data = await fetchData();
-			dispatch(addPriseList(data));
+			dispatch(addPriceList(data));
 		};
-		fetchPriseList();
+		fetchPriceList();
 	}
 
 	render() {

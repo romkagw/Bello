@@ -58,9 +58,14 @@ class CardList extends React.Component {
 
 			const tempOrder = updatedCardList[draggedCardIndex].order;
 
-			updatedCardList[draggedCardIndex].order =
-				updatedCardList[currentCardIndex].order;
-			updatedCardList[currentCardIndex].order = tempOrder;
+			updatedCardList[draggedCardIndex] = {
+				...updatedCardList[draggedCardIndex],
+				order: updatedCardList[currentCardIndex].order
+			};
+			updatedCardList[currentCardIndex] = {
+				...updatedCardList[currentCardIndex],
+				order: tempOrder
+			};
 
 			this.setState({
 				cardList: updatedCardList

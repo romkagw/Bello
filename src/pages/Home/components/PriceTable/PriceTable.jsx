@@ -32,14 +32,8 @@ class PriceTable extends Component {
 		};
 
 		if (e.code === 'Space') {
-			const table = document.querySelector('.table-container');
-			if (!active) {
-				table.classList.add('active');
-			} else {
-				isActiveRow(false);
-				dispatch(addPriceList(tempPriceList));
-				table.classList.remove('active');
-			}
+			isActiveRow(false);
+			dispatch(addPriceList(tempPriceList));
 			dispatch(setActive());
 		}
 
@@ -83,10 +77,9 @@ class PriceTable extends Component {
 	};
 
 	render() {
-		const { priceList } = this.props;
-
+		const { priceList, active } = this.props;
 		return (
-			<div className='table-container'>
+			<div className={`table-container ${active && 'active'}`}>
 				<table className='table'>
 					<thead>
 						<tr>
@@ -134,9 +127,9 @@ PriceTable.propTypes = {
 };
 const mapStateToProps = state => {
 	return {
-		active: state.prise.active,
-		priceList: state.prise.priceList,
-		ascendingPrice: state.prise.ascendingPrice
+		active: state.price.active,
+		priceList: state.price.priceList,
+		ascendingPrice: state.price.ascendingPrice
 	};
 };
 

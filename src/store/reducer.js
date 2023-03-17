@@ -4,5 +4,5 @@ import priceReducer from './modules/PriceList/reducer';
 
 export default combineReducers({
 	modal: modalReducer,
-	prise: priceReducer
+	price: priceReducer
 });

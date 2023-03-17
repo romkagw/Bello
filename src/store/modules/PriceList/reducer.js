@@ -6,8 +6,8 @@ const initialState = {
 	active: false
 };
 
-const PriseSlice = createSlice({
-	name: 'prise',
+const PriceSlice = createSlice({
+	name: 'price',
 	initialState,
 	reducers: {
 		setActive: state => {
@@ -24,5 +24,5 @@ const PriseSlice = createSlice({
 });
 
 export const { setActive, addPriceList, setAscendingPrice } =
-	PriseSlice.actions;
-export default PriseSlice.reducer;
+	PriceSlice.actions;
+export default PriceSlice.reducer;

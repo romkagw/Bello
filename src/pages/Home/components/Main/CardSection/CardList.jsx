@@ -12,40 +12,45 @@ class CardList extends React.Component {
 					order: 1,
 					title: 'Calculator',
 					textCard: 'How much life insurance do I need?',
-					textLink: 'Calculate Coverage'
+					textLink: 'Calculate Coverage',
+					hide: false
 				},
 				{
 					id: 2,
 					order: 2,
 					title: 'Term vs. perm',
 					textCard: 'Term vs. whole life insurance. Which is best for you?',
-					textLink: 'See the winner'
+					textLink: 'See the winner',
+					hide: false
 				},
 				{
 					id: 3,
 					order: 3,
 					title: 'Pricing',
 					textCard: 'How much does life insurance cost?',
-					textLink: 'Tell me more'
+					textLink: 'Tell me more',
+					hide: false
 				},
 				{
 					id: 4,
 					order: 4,
 					title: 'Insurance 101',
 					textCard: 'The ultimate guide to life insurance.',
-					textLink: 'Become an expert'
+					textLink: 'Become an expert',
+					hide: false
 				}
 			],
 			currentCard: null
 		};
 	}
 
-	dragStartHandler = (e, card) => {
-		this.setState({ currentCard: card });
+	dragStartHandler = card => {
+		const { cardList } = this.state;
+		const indexCard = cardList.indexOf(card);
+		const updatedCardList = [...cardList];
 
-		setTimeout(() => {
-			e.target.classList.add('hide');
-		}, 0);
+		updatedCardList[indexCard] = { ...card, hide: true };
+		this.setState({ cardList: updatedCardList, currentCard: card });
 	};
 
 	dragOverHandler = (e, card) => {
@@ -73,13 +78,13 @@ class CardList extends React.Component {
 		}
 	};
 
-	dragEndHandler = e => {
-		e.target.classList.remove('hide');
-		/* важный момент, если не убирать после окончания драгинга
-		 значение из  "currentCard" то драгинг будет срабатывать
-		  при любом перетягивании над зоной дропа
-		 */
-		this.setState({ currentCard: null });
+	dragEndHandler = () => {
+		const { cardList } = this.state;
+
+		const updatedCardList = [...cardList].map(card => {
+			return card.hide ? { ...card, hide: false } : card;
+		});
+		this.setState({ cardList: updatedCardList, currentCard: null });
 	};
 
 	sortCards = (a, b) => (a.order > b.order ? 1 : -1);
@@ -92,10 +97,10 @@ class CardList extends React.Component {
 			<div className='cards-block'>
 				{sortedCardList.map(card => (
 					<Card
-						onDragStart={e => this.dragStartHandler(e, card)}
+						onDragStart={() => this.dragStartHandler(card)}
 						onDragOver={e => this.dragOverHandler(e, card)}
-						onDragEnd={e => this.dragEndHandler(e)}
-						className={`card${card.id}`}
+						onDragEnd={() => this.dragEndHandler()}
+						className={`card${card.id} ${card.hide && 'hide'}`}
 						key={card.id}
 					>
 						<h4>{card.title}</h4>

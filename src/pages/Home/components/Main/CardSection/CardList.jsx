@@ -86,10 +86,11 @@ class CardList extends React.Component {
 
 	render() {
 		const { cardList } = this.state;
+		const sortedCardList = [...cardList].sort(this.sortCards);
 
 		return (
 			<div className='cards-block'>
-				{cardList.sort(this.sortCards).map(card => (
+				{sortedCardList.map(card => (
 					<Card
 						onDragStart={e => this.dragStartHandler(e, card)}
 						onDragOver={e => this.dragOverHandler(e, card)}

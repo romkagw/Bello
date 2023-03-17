@@ -21,30 +21,40 @@ class PriceTable extends Component {
 	handleTableActivation = e => {
 		e.preventDefault();
 		const { active, dispatch, priceList } = this.props;
+		const tempPriceList = [...priceList];
+		let activeIndex = tempPriceList.findIndex(item => item.active);
+
+		const isActiveRow = bool => {
+			tempPriceList[activeIndex] = {
+				...tempPriceList[activeIndex],
+				active: bool
+			};
+		};
+
 		if (e.code === 'Space') {
 			const table = document.querySelector('.table-container');
-			if (!active) table.classList.add('active');
-			else table.classList.remove('active');
+			if (!active) {
+				table.classList.add('active');
+			} else {
+				isActiveRow(false);
+				dispatch(addPriceList(tempPriceList));
+				table.classList.remove('active');
+			}
 			dispatch(setActive());
 		}
 
 		if ((e.code === 'ArrowDown' || e.code === 'ArrowUp') && active) {
-			const tempPriceList = JSON.parse(JSON.stringify(priceList));
-			let activeIndex = tempPriceList.findIndex(item => item.active);
-			if (activeIndex === -1) {
-				activeIndex = 0;
-			} else {
-				tempPriceList[activeIndex].active = false;
+			isActiveRow(false);
 
-				if (e.code === 'ArrowDown') {
-					activeIndex =
-						activeIndex < tempPriceList.length - 1 ? activeIndex + 1 : 0;
-				} else if (e.code === 'ArrowUp') {
-					activeIndex =
-						activeIndex > 0 ? activeIndex - 1 : tempPriceList.length - 1;
-				}
+			if (e.code === 'ArrowDown') {
+				activeIndex =
+					activeIndex < tempPriceList.length - 1 ? activeIndex + 1 : 0;
+			} else if (e.code === 'ArrowUp') {
+				activeIndex =
+					activeIndex > 0 ? activeIndex - 1 : tempPriceList.length - 1;
 			}
-			tempPriceList[activeIndex].active = true;
+
+			isActiveRow(true);
 			dispatch(addPriceList(tempPriceList));
 		}
 	};

@@ -27,7 +27,11 @@ class Modal extends Component {
 				{isModalVisible && (
 					<div className='modal'>
 						<div className='modal-content'>
-							<button type='button' className='close' onClick={hideModalAction}>
+							<button
+								type='button'
+								className='close'
+								onClick={() => hideModalAction()}
+							>
 								×
 							</button>
 							{children}

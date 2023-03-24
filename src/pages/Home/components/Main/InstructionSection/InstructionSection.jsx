@@ -49,7 +49,7 @@ class InstructionSection extends React.Component {
 					</div>
 					<Button
 						className='get-my-price'
-						onClick={showModalAction}
+						onClick={() => showModalAction()}
 						arrowPointer
 					>
 						Get my price

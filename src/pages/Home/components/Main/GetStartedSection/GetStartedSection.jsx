@@ -18,7 +18,7 @@ class GetStartedSection extends Component {
 						</p>
 						<Button
 							className='get-my-price'
-							onClick={showModalAction}
+							onClick={() => showModalAction()}
 							arrowPointer
 						>
 							Get my price

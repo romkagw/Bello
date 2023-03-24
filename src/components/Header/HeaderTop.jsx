@@ -19,7 +19,7 @@ class HeaderTop extends React.Component {
 					<a href='/#'>Help</a>
 					<div className='buttons-header'>
 						<Button className='log-in'>Log in</Button>
-						<Button className='get-price' onClick={showModalAction}>
+						<Button className='get-price' onClick={() => showModalAction()}>
 							Get my price
 						</Button>
 					</div>

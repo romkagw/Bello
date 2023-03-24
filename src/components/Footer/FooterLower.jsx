@@ -11,7 +11,7 @@ class FooterLower extends Component {
 				<div className='container'>
 					<div>
 						<p>© 2020 Bello insurance Services LLC. All right reserved.</p>
-						<button type='button' onClick={showModalAction}>
+						<button type='button' onClick={() => showModalAction()}>
 							Get my price
 						</button>
 					</div>

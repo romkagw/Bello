@@ -26,7 +26,7 @@ class StatsSection extends React.Component {
 								life insurance makes protecting your loved ones easy and
 								affordable.
 							</p>
-							<Button arrowPointer onClick={showModalAction}>
+							<Button arrowPointer onClick={() => showModalAction()}>
 								Get My Price
 							</Button>
 						</div>

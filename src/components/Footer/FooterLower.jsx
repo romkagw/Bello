@@ -5,13 +5,13 @@ import { showModal } from '../../store/modules/Modal/reducer';
 
 class FooterLower extends Component {
 	render() {
-		const { dispatch } = this.props;
+		const { showModalAction } = this.props;
 		return (
 			<div id='footer-lower'>
 				<div className='container'>
 					<div>
 						<p>© 2020 Bello insurance Services LLC. All right reserved.</p>
-						<button type='button' onClick={() => dispatch(showModal())}>
+						<button type='button' onClick={showModalAction}>
 							Get my price
 						</button>
 					</div>
@@ -21,7 +21,10 @@ class FooterLower extends Component {
 	}
 }
 FooterLower.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	showModalAction: PropTypes.func.isRequired
 };
 
-export default connect()(FooterLower);
+const mapDispatchToProps = {
+	showModalAction: showModal
+};
+export default connect(null, mapDispatchToProps)(FooterLower);

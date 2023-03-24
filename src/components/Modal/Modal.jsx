@@ -15,23 +15,19 @@ class Modal extends Component {
 
 	handleKeyDown = event => {
 		if (event.keyCode === 27) {
-			const { dispatch } = this.props;
-			dispatch(hideModal());
+			const { hideModalAction } = this.props;
+			hideModalAction();
 		}
 	};
 
 	render() {
-		const { children, dispatch, isModalVisible } = this.props;
+		const { children, hideModalAction, isModalVisible } = this.props;
 		return (
 			<div>
 				{isModalVisible && (
 					<div className='modal'>
 						<div className='modal-content'>
-							<button
-								type='button'
-								className='close'
-								onClick={() => dispatch(hideModal())}
-							>
+							<button type='button' className='close' onClick={hideModalAction}>
 								×
 							</button>
 							{children}
@@ -45,7 +41,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
 	children: PropTypes.node.isRequired,
-	dispatch: PropTypes.func.isRequired,
+	hideModalAction: PropTypes.func.isRequired,
 	isModalVisible: PropTypes.bool.isRequired
 };
 
@@ -55,4 +51,8 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Modal);
+const mapDispatchToProps = {
+	hideModalAction: hideModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

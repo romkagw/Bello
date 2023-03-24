@@ -6,7 +6,7 @@ import Button from '../../../../../components/Button/Button';
 
 class GetStartedSection extends Component {
 	render() {
-		const { dispatch } = this.props;
+		const { showModalAction } = this.props;
 		return (
 			<section id='get-started'>
 				<div className='container'>
@@ -18,7 +18,7 @@ class GetStartedSection extends Component {
 						</p>
 						<Button
 							className='get-my-price'
-							onClick={() => dispatch(showModal())}
+							onClick={showModalAction}
 							arrowPointer
 						>
 							Get my price
@@ -30,7 +30,11 @@ class GetStartedSection extends Component {
 	}
 }
 GetStartedSection.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	showModalAction: PropTypes.func.isRequired
 };
 
-export default connect()(GetStartedSection);
+const mapDispatchToProps = {
+	showModalAction: showModal
+};
+
+export default connect(null, mapDispatchToProps)(GetStartedSection);

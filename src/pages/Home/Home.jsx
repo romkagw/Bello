@@ -12,13 +12,10 @@ import { addPriceList } from '../../store/modules/PriceList/reducer';
 import fetchData from '../../api/api';
 
 class Home extends Component {
-	componentDidMount() {
-		const fetchPriceList = async () => {
-			const { dispatch } = this.props;
-			const data = await fetchData();
-			dispatch(addPriceList(data));
-		};
-		fetchPriceList();
+	async componentDidMount() {
+		const { getPriceList } = this.props;
+		const data = await fetchData();
+		getPriceList(data);
 	}
 
 	render() {
@@ -36,7 +33,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	getPriceList: PropTypes.func.isRequired
+};
+const mapDispatchToProps = {
+	getPriceList: addPriceList
 };
 
-export default connect(null)(Home);
+export default connect(null, mapDispatchToProps)(Home);

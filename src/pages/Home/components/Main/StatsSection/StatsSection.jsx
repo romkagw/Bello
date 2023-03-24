@@ -6,7 +6,7 @@ import Button from '../../../../../components/Button/Button';
 
 class StatsSection extends React.Component {
 	render() {
-		const { dispatch } = this.props;
+		const { showModalAction } = this.props;
 		return (
 			<section id='stats'>
 				<div className='container'>
@@ -26,7 +26,7 @@ class StatsSection extends React.Component {
 								life insurance makes protecting your loved ones easy and
 								affordable.
 							</p>
-							<Button arrowPointer onClick={() => dispatch(showModal())}>
+							<Button arrowPointer onClick={showModalAction}>
 								Get My Price
 							</Button>
 						</div>
@@ -37,6 +37,10 @@ class StatsSection extends React.Component {
 	}
 }
 StatsSection.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	showModalAction: PropTypes.func.isRequired
 };
-export default connect()(StatsSection);
+
+const mapDispatchToProps = {
+	showModalAction: showModal
+};
+export default connect(null, mapDispatchToProps)(StatsSection);

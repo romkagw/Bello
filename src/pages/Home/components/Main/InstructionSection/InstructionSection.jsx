@@ -11,8 +11,7 @@ import Image from '../../../../../components/Image/Image';
 
 class InstructionSection extends React.Component {
 	render() {
-		const { dispatch } = this.props;
-
+		const { showModalAction } = this.props;
 		return (
 			<section id='instruction'>
 				<div className='container'>
@@ -50,7 +49,7 @@ class InstructionSection extends React.Component {
 					</div>
 					<Button
 						className='get-my-price'
-						onClick={() => dispatch(showModal())}
+						onClick={showModalAction}
 						arrowPointer
 					>
 						Get my price
@@ -61,6 +60,10 @@ class InstructionSection extends React.Component {
 	}
 }
 InstructionSection.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	showModalAction: PropTypes.func.isRequired
 };
-export default connect()(InstructionSection);
+
+const mapDispatchToProps = {
+	showModalAction: showModal
+};
+export default connect(null, mapDispatchToProps)(InstructionSection);

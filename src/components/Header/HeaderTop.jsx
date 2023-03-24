@@ -8,7 +8,7 @@ import { showModal } from '../../store/modules/Modal/reducer';
 
 class HeaderTop extends React.Component {
 	render() {
-		const { dispatch } = this.props;
+		const { showModalAction } = this.props;
 
 		return (
 			<div className='header-top'>
@@ -19,7 +19,7 @@ class HeaderTop extends React.Component {
 					<a href='/#'>Help</a>
 					<div className='buttons-header'>
 						<Button className='log-in'>Log in</Button>
-						<Button className='get-price' onClick={() => dispatch(showModal())}>
+						<Button className='get-price' onClick={showModalAction}>
 							Get my price
 						</Button>
 					</div>
@@ -29,7 +29,11 @@ class HeaderTop extends React.Component {
 	}
 }
 HeaderTop.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	showModalAction: PropTypes.func.isRequired
 };
 
-export default connect()(HeaderTop);
+const mapDispatchToProps = {
+	showModalAction: showModal
+};
+
+export default connect(null, mapDispatchToProps)(HeaderTop);

@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { showModal } from '../../../../../store/modules/Modal/reducer';
-import Button from '../../../../../components/Button/Button';
 import circle from '../../../../../assets/images/circle.svg';
 import oneNumber from '../../../../../assets/images/1.svg';
 import twoNumber from '../../../../../assets/images/2.svg';
 import threeHumber from '../../../../../assets/images/3.svg';
 import Image from '../../../../../components/Image/Image';
+import Button from '../../../../../components/Button/Button';
+import withModal from '../../../../../hoc/withModalButton';
+
+const ButtonWithModal = withModal(Button);
 
 class InstructionSection extends React.Component {
 	render() {
-		const { showModalAction } = this.props;
 		return (
 			<section id='instruction'>
 				<div className='container'>
@@ -47,23 +46,13 @@ class InstructionSection extends React.Component {
 							</p>
 						</div>
 					</div>
-					<Button
-						className='get-my-price'
-						onClick={() => showModalAction()}
-						arrowPointer
-					>
+					<ButtonWithModal className='get-my-price' arrowPointer>
 						Get my price
-					</Button>
+					</ButtonWithModal>
 				</div>
 			</section>
 		);
 	}
 }
-InstructionSection.propTypes = {
-	showModalAction: PropTypes.func.isRequired
-};
 
-const mapDispatchToProps = {
-	showModalAction: showModal
-};
-export default connect(null, mapDispatchToProps)(InstructionSection);
+export default InstructionSection;

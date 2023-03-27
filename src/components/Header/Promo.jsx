@@ -1,12 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { showModal } from '../../store/modules/Modal/reducer';
 import Button from '../Button/Button';
+import withModal from '../../hoc/withModalButton';
 
+const ButtonWithModal = withModal(Button);
 class Promo extends React.Component {
 	render() {
-		const { showModalAction } = this.props;
 		return (
 			<section className='promo'>
 				<div className='container'>
@@ -19,13 +17,9 @@ class Promo extends React.Component {
 								<br />
 								in as little as 10 minutes.
 							</p>
-							<Button
-								className='get-my-price'
-								onClick={() => showModalAction()}
-								arrowPointer
-							>
+							<ButtonWithModal className='get-my-price' arrowPointer>
 								Get my price
-							</Button>
+							</ButtonWithModal>
 						</div>
 						<div className='promo-image' />
 					</div>
@@ -34,12 +28,5 @@ class Promo extends React.Component {
 		);
 	}
 }
-Promo.propTypes = {
-	showModalAction: PropTypes.func.isRequired
-};
 
-const mapDispatchToProps = {
-	showModalAction: showModal
-};
-
-export default connect(null, mapDispatchToProps)(Promo);
+export default Promo;

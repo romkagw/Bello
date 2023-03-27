@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { showModal } from '../../../../../store/modules/Modal/reducer';
 import Button from '../../../../../components/Button/Button';
+import withModal from '../../../../../hoc/withModalButton';
+
+const ButtonWithModal = withModal(Button);
 
 class StatsSection extends React.Component {
 	render() {
-		const { showModalAction } = this.props;
 		return (
 			<section id='stats'>
 				<div className='container'>
@@ -26,9 +25,7 @@ class StatsSection extends React.Component {
 								life insurance makes protecting your loved ones easy and
 								affordable.
 							</p>
-							<Button arrowPointer onClick={() => showModalAction()}>
-								Get My Price
-							</Button>
+							<ButtonWithModal arrowPointer>Get My Price</ButtonWithModal>
 						</div>
 					</div>
 				</div>
@@ -36,11 +33,5 @@ class StatsSection extends React.Component {
 		);
 	}
 }
-StatsSection.propTypes = {
-	showModalAction: PropTypes.func.isRequired
-};
 
-const mapDispatchToProps = {
-	showModalAction: showModal
-};
-export default connect(null, mapDispatchToProps)(StatsSection);
+export default StatsSection;

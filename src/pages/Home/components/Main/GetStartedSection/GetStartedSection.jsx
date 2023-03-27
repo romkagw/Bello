@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { showModal } from '../../../../../store/modules/Modal/reducer';
 import Button from '../../../../../components/Button/Button';
+import withModal from '../../../../../hoc/withModalButton';
+
+const ButtonWithModal = withModal(Button);
 
 class GetStartedSection extends Component {
 	render() {
-		const { showModalAction } = this.props;
 		return (
 			<section id='get-started'>
 				<div className='container'>
@@ -16,25 +15,14 @@ class GetStartedSection extends Component {
 							Join the Bello community of people who are securing their
 							financial future.
 						</p>
-						<Button
-							className='get-my-price'
-							onClick={() => showModalAction()}
-							arrowPointer
-						>
+						<ButtonWithModal className='get-my-price' arrowPointer>
 							Get my price
-						</Button>
+						</ButtonWithModal>
 					</div>
 				</div>
 			</section>
 		);
 	}
 }
-GetStartedSection.propTypes = {
-	showModalAction: PropTypes.func.isRequired
-};
 
-const mapDispatchToProps = {
-	showModalAction: showModal
-};
-
-export default connect(null, mapDispatchToProps)(GetStartedSection);
+export default GetStartedSection;

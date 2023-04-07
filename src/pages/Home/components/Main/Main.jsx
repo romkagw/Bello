@@ -6,19 +6,24 @@ import InstructionSection from './InstructionSection/InstructionSection';
 import LearningCenterSection from './LearningCenterSection/LearningCenterSection';
 import StatsSection from './StatsSection/StatsSection';
 import TopRatedSection from './TopRatedSection/TopRatedSection';
+import { ThemeContext } from '../../../../Provider/ThemeColorProvider';
 
 class Main extends React.Component {
 	render() {
 		return (
-			<main>
-				<StatsSection />
-				<HelpSection />
-				<TopRatedSection />
-				<InstructionSection />
-				<LearningCenterSection />
-				<CardSection />
-				<GetStartedSection />
-			</main>
+			<ThemeContext.Consumer>
+				{({ theme }) => (
+					<main className={theme === 'dark' && 'dark'}>
+						<StatsSection />
+						<HelpSection />
+						<TopRatedSection />
+						<InstructionSection />
+						<LearningCenterSection />
+						<CardSection />
+						<GetStartedSection />
+					</main>
+				)}
+			</ThemeContext.Consumer>
 		);
 	}
 }

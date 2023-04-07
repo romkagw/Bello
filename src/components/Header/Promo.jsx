@@ -1,12 +1,14 @@
 import React from 'react';
 import Button from '../Button/Button';
 import withModal from '../../hoc/withModalButton';
+import ThemeSlider from '../ThemeSlider/ThemeSlider';
 
 const ButtonWithModal = withModal(Button);
 class Promo extends React.Component {
 	render() {
 		return (
 			<section className='promo'>
+				<ThemeSlider />
 				<div className='container'>
 					<div className='promo-content'>
 						<div className='promo-info'>

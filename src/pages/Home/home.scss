@@ -28,7 +28,208 @@ section {
 	vertical-align: baseline;
 	background: transparent;
 }
+.dark {
+	* {
+		h5 {
+			color: #ffe000;
+		}
+	}
+	transition: 0.5s;
+	background-color: rgba(10, 104, 122, 0.507);
 
+	.header-top {
+		box-shadow: 0 0 5px rgba(255, 255, 255, 0.75);
+		img {
+			filter: drop-shadow(-2px 1px 1px black);
+		}
+		a {
+			color: #fff;
+			&:hover {
+				color: #ffe000;
+				border-bottom: 1px solid #ffe000;
+			}
+		}
+	}
+
+	.buttons-header * {
+		color: #fff;
+	}
+
+	.buttons-header .get-price {
+		color: #000;
+		background: #f4f5f5;
+		&:hover {
+			background-color: #126f86;
+			color: #fff;
+		}
+	}
+
+	.promo-info > p {
+		color: #f3f6ff;
+	}
+
+	#stats {
+		background-color: rgba(66, 68, 68, 0.25);
+
+		.image-stats div {
+			box-shadow: 0 0 12px 3px #cecece;
+
+			background-color: rgb(138, 162, 175);
+		}
+
+		.image-stats p,
+		.text-content-stats-block > p {
+			color: #fff;
+		}
+		.text-content-stats-block > button {
+			color: #000;
+			&:hover {
+				color: yellow;
+				* {
+					fill: yellow;
+				}
+			}
+			* {
+				fill: #000;
+			}
+		}
+	}
+
+	.help-content > p {
+		color: #f7e3af;
+	}
+	.help-content > button {
+		color: #000;
+		&:hover {
+			color: yellow;
+			* {
+				fill: yellow;
+			}
+		}
+		* {
+			fill: #000;
+		}
+	}
+	#top-rated {
+		background-color: rgba(66, 68, 68, 0.082);
+		p {
+			color: #000;
+		}
+		.cards > div {
+			background-color: rgb(255 255 255 / 56%);
+		}
+	}
+	#learning-center {
+		background-color: rgba(66, 68, 68, 0.082);
+		p {
+			color: #f3f6ff;
+		}
+		.learning-center-content > button {
+			color: #000;
+			&:hover {
+				color: yellow;
+				* {
+					fill: yellow;
+				}
+			}
+			* {
+				fill: #000;
+			}
+		}
+	}
+	#section-cards {
+		.cards-block {
+			button {
+				transition: 0.3s;
+				&:hover {
+					color: yellow;
+					* {
+						fill: yellow;
+					}
+				}
+			}
+		}
+
+		.card1 {
+			background: rgb(111 190 255 / 65%);
+			color: #005096;
+			button {
+				color: #005096;
+
+				* {
+					fill: #005096;
+				}
+			}
+		}
+		.card2 {
+			background: rgb(251 149 44 / 65%);
+			color: #914600;
+			button {
+				color: #914600;
+
+				* {
+					fill: #914600;
+				}
+			}
+		}
+		.card3 {
+			background: rgb(250 82 64 / 65%);
+			color: #970f00;
+			button {
+				color: #970f00;
+
+				* {
+					fill: #970f00;
+				}
+			}
+		}
+		.card4 {
+			background: rgba(18, 111, 133, 0.65);
+			color: #01586b;
+			button {
+				color: #01586b;
+
+				* {
+					fill: #01586b;
+				}
+			}
+		}
+	}
+	#get-started {
+		background: #9fc6e5ab;
+	}
+	.footer-info a {
+		color: #666666;
+		&:hover {
+			color: white;
+		}
+	}
+	.social-media {
+		p {
+			color: #fff;
+		}
+		input {
+			background-color: #ffffff;
+		}
+		a svg {
+			color: #007189;
+		}
+	}
+	#footer-lower {
+		background-color: rgba(10, 104, 122, 0.507);
+		button {
+			color: #ffffff;
+			border: 1px solid rgb(255 255 255 / 50%);
+		}
+		p {
+			color: #d7d7d7;
+		}
+	}
+	.my-info {
+		background-color: rgba(10, 104, 122, 0.507);
+		box-shadow: 10px 0px 15px white;
+	}
+}
 body {
 	line-height: 1;
 }
@@ -122,6 +323,11 @@ button {
 .container {
 	width: 1243px;
 	margin: 0 auto;
+}
+.promo > .slider {
+	position: absolute;
+	margin: 0;
+	right: 20px;
 }
 
 .promo-content {

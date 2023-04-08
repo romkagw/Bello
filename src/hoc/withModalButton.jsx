@@ -1,26 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { showModal } from '../store/modules/Modal/reducer';
 import { ReactComponent as ArrowPointer } from '../assets/images/Arrow.svg';
 
 const withModalButton = Component => {
-	class ButtonWithModal extends React.Component {
-		render() {
-			const { className, children, showModalAction, arrowPointer } = this.props;
+	function ButtonWithModal({ className, children, arrowPointer }) {
+		const dispatch = useDispatch();
 
-			return (
-				<Component onClick={() => showModalAction()} className={className}>
-					{children} {arrowPointer && <ArrowPointer />}
-				</Component>
-			);
-		}
+		return (
+			<Component onClick={() => dispatch(showModal())} className={className}>
+				{children} {arrowPointer && <ArrowPointer />}
+			</Component>
+		);
 	}
 
 	ButtonWithModal.propTypes = {
 		className: PropTypes.string,
 		children: PropTypes.node.isRequired,
-		showModalAction: PropTypes.func.isRequired,
 		arrowPointer: PropTypes.bool
 	};
 	ButtonWithModal.defaultProps = {
@@ -28,7 +25,7 @@ const withModalButton = Component => {
 		arrowPointer: false
 	};
 
-	return connect(null, { showModalAction: showModal })(ButtonWithModal);
+	return ButtonWithModal;
 };
 
 export default withModalButton;

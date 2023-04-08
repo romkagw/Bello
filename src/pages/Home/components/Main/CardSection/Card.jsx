@@ -2,22 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './card.scss';
 
-class Card extends React.Component {
-	render() {
-		const { className, children, onDragStart, onDragOver, onDragEnd } =
-			this.props;
-		return (
-			<div
-				className={`boards ${className}`}
-				draggable
-				onDragStart={onDragStart}
-				onDragOver={onDragOver}
-				onDragEnd={onDragEnd}
-			>
-				{children}
-			</div>
-		);
-	}
+function Card({ className, children, onDragStart, onDragOver, onDragEnd }) {
+	return (
+		<div
+			className={`boards ${className}`}
+			draggable
+			onDragStart={onDragStart}
+			onDragOver={onDragOver}
+			onDragEnd={onDragEnd}
+		>
+			{children}
+		</div>
+	);
 }
 
 Card.propTypes = {

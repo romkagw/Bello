@@ -1,61 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 import Button from '../../../../../components/Button/Button';
 
-class CardList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			cardList: [
-				{
-					id: 1,
-					order: 1,
-					title: 'Calculator',
-					textCard: 'How much life insurance do I need?',
-					textLink: 'Calculate Coverage',
-					hide: false
-				},
-				{
-					id: 2,
-					order: 2,
-					title: 'Term vs. perm',
-					textCard: 'Term vs. whole life insurance. Which is best for you?',
-					textLink: 'See the winner',
-					hide: false
-				},
-				{
-					id: 3,
-					order: 3,
-					title: 'Pricing',
-					textCard: 'How much does life insurance cost?',
-					textLink: 'Tell me more',
-					hide: false
-				},
-				{
-					id: 4,
-					order: 4,
-					title: 'Insurance 101',
-					textCard: 'The ultimate guide to life insurance.',
-					textLink: 'Become an expert',
-					hide: false
-				}
-			],
-			currentCard: null
-		};
-	}
+function CardList({ list }) {
+	const [cardList, setCardList] = useState(list);
 
-	dragStartHandler = card => {
-		const { cardList } = this.state;
+	const [currentCard, setCurrentCard] = useState(null);
+
+	const dragStartHandler = card => {
 		const indexCard = cardList.indexOf(card);
 		const updatedCardList = [...cardList];
 
 		updatedCardList[indexCard] = { ...card, hide: true };
-		this.setState({ cardList: updatedCardList, currentCard: card });
+		setCardList(updatedCardList);
+		setCurrentCard(card);
 	};
 
-	dragOverHandler = (e, card) => {
+	const dragOverHandler = (e, card) => {
 		e.preventDefault();
-		const { cardList, currentCard } = this.state;
 		if (currentCard) {
 			const draggedCardIndex = cardList.findIndex(c => c.id === currentCard.id);
 			const currentCardIndex = cardList.findIndex(c => c.id === card.id);
@@ -72,45 +35,49 @@ class CardList extends React.Component {
 				order: tempOrder
 			};
 
-			this.setState({
-				cardList: updatedCardList
-			});
+			setCardList(updatedCardList);
 		}
 	};
 
-	dragEndHandler = () => {
-		const { cardList } = this.state;
-
+	const dragEndHandler = () => {
 		const updatedCardList = [...cardList].map(card => {
 			return card.hide ? { ...card, hide: false } : card;
 		});
-		this.setState({ cardList: updatedCardList, currentCard: null });
+		setCardList(updatedCardList);
+		setCurrentCard(null);
 	};
 
-	sortCards = (a, b) => (a.order > b.order ? 1 : -1);
+	const sortCards = (a, b) => (a.order > b.order ? 1 : -1);
 
-	render() {
-		const { cardList } = this.state;
-		const sortedCardList = [...cardList].sort(this.sortCards);
-
-		return (
-			<div className='cards-block'>
-				{sortedCardList.map(card => (
-					<Card
-						onDragStart={() => this.dragStartHandler(card)}
-						onDragOver={e => this.dragOverHandler(e, card)}
-						onDragEnd={() => this.dragEndHandler()}
-						className={`card${card.id} ${card.hide && 'hide'}`}
-						key={card.id}
-					>
-						<h4>{card.title}</h4>
-						<p>{card.textCard}</p>
-						<Button arrowPointer>{card.textLink}</Button>
-					</Card>
-				))}
-			</div>
-		);
-	}
+	return (
+		<div className='cards-block'>
+			{cardList.sort(sortCards).map(card => (
+				<Card
+					onDragStart={() => dragStartHandler(card)}
+					onDragOver={e => dragOverHandler(e, card)}
+					onDragEnd={dragEndHandler}
+					className={`card${card.id} ${card.hide && 'hide'}`}
+					key={card.id}
+				>
+					<h4>{card.title}</h4>
+					<p>{card.textCard}</p>
+					<Button arrowPointer>{card.textLink}</Button>
+				</Card>
+			))}
+		</div>
+	);
 }
+CardList.propTypes = {
+	list: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			order: PropTypes.number.isRequired,
+			title: PropTypes.string.isRequired,
+			textCard: PropTypes.string.isRequired,
+			textLink: PropTypes.string.isRequired,
+			hide: PropTypes.bool.isRequired
+		})
+	).isRequired
+};
 
 export default CardList;

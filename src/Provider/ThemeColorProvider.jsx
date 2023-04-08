@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const ThemeContext = React.createContext({
@@ -7,28 +7,18 @@ export const ThemeContext = React.createContext({
 	toggleTheme: () => {}
 });
 
-class ThemeProvider extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { theme: 'light' };
-	}
+function ThemeProvider({ children }) {
+	const [theme, setTheme] = useState('light');
 
-	toggleTheme = () => {
-		this.setState(prevState => ({
-			theme: prevState.theme === 'light' ? 'dark' : 'light'
-		}));
+	const toggleTheme = () => {
+		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
-	render() {
-		const { children } = this.props;
-		const { theme } = this.state;
-
-		return (
-			<ThemeContext.Provider value={{ theme, toggleTheme: this.toggleTheme }}>
-				{children}
-			</ThemeContext.Provider>
-		);
-	}
+	return (
+		<ThemeContext.Provider value={{ theme, toggleTheme }}>
+			{children}
+		</ThemeContext.Provider>
+	);
 }
 
 ThemeProvider.propTypes = {

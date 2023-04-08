@@ -1,62 +1,47 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideModal } from '../../store/modules/Modal/reducer';
 
-class Modal extends Component {
-	componentDidMount() {
-		document.addEventListener('keydown', this.handleKeyDown);
-	}
+function Modal({ children }) {
+	const isModalVisible = useSelector(state => state.modal.isModalVisible);
+	const dispatch = useDispatch();
 
-	componentWillUnmount() {
-		document.removeEventListener('keydown', this.handleKeyDown);
-	}
-
-	handleKeyDown = event => {
+	const handleKeyDown = event => {
 		if (event.keyCode === 27) {
-			const { hideModalAction } = this.props;
-			hideModalAction();
+			dispatch(hideModal());
 		}
 	};
+	useEffect(() => {
+		document.addEventListener('keydown', handleKeyDown);
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
 
-	render() {
-		const { children, hideModalAction, isModalVisible } = this.props;
-		return (
-			<div>
-				{isModalVisible && (
-					<div className='modal'>
-						<div className='modal-content'>
-							<button
-								type='button'
-								className='close'
-								onClick={() => hideModalAction()}
-							>
-								×
-							</button>
-							{children}
-						</div>
+	return (
+		<div>
+			{isModalVisible && (
+				<div className='modal'>
+					<div className='modal-content'>
+						<button
+							type='button'
+							className='close'
+							onClick={() => dispatch(hideModal())}
+						>
+							×
+						</button>
+						{children}
 					</div>
-				)}
-			</div>
-		);
-	}
+				</div>
+			)}
+		</div>
+	);
 }
 
 Modal.propTypes = {
-	children: PropTypes.node.isRequired,
-	hideModalAction: PropTypes.func.isRequired,
-	isModalVisible: PropTypes.bool.isRequired
+	children: PropTypes.node.isRequired
 };
 
-const mapStateToProps = state => {
-	return {
-		isModalVisible: state.modal.isModalVisible
-	};
-};
-
-const mapDispatchToProps = {
-	hideModalAction: hideModal
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default Modal;

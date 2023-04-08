@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
 import Button from '../../../../../components/Button/Button';
 import withModal from '../../../../../hoc/withModalButton';
 
 const ButtonWithModal = withModal(Button);
 
-class GetStartedSection extends Component {
-	render() {
-		return (
-			<section id='get-started'>
-				<div className='container'>
-					<div className='get-started-content'>
-						<h3>Get Started Today.</h3>
-						<p>
-							Join the Bello community of people who are securing their
-							financial future.
-						</p>
-						<ButtonWithModal className='get-my-price' arrowPointer>
-							Get my price
-						</ButtonWithModal>
-					</div>
+function GetStartedSection() {
+	return (
+		<section id='get-started'>
+			<div className='container'>
+				<div className='get-started-content'>
+					<h3>Get Started Today.</h3>
+					<p>
+						Join the Bello community of people who are securing their financial
+						future.
+					</p>
+					<ButtonWithModal className='get-my-price' arrowPointer>
+						Get my price
+					</ButtonWithModal>
 				</div>
-			</section>
-		);
-	}
+			</div>
+		</section>
+	);
 }
 
 export default GetStartedSection;

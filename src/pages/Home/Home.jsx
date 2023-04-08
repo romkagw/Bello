@@ -1,43 +1,38 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { Component } from 'react';
-import './home.scss';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addPriceList } from '../../store/modules/PriceList/reducer';
+import fetchData from '../../api/api';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Modal from '../../components/Modal/Modal';
 import Main from './components/Main/Main';
 import PriceTable from './components/PriceTable/PriceTable';
-import { addPriceList } from '../../store/modules/PriceList/reducer';
-import fetchData from '../../api/api';
 import ThemeProvider from '../../Provider/ThemeColorProvider';
+import './home.scss';
 
-class Home extends Component {
-	async componentDidMount() {
-		const { getPriceList } = this.props;
+function Home() {
+	const priceList = useSelector(state => state.priceList);
+	const dispatch = useDispatch();
+
+	async function fetchPriceList() {
 		const data = await fetchData();
-		getPriceList(data);
+		dispatch(addPriceList(data));
 	}
 
-	render() {
-		return (
-			<ThemeProvider>
-				<Header />
-				<Main />
-				<Footer />
-				<Modal>
-					<PriceTable />
-				</Modal>
-			</ThemeProvider>
-		);
-	}
+	useEffect(() => {
+		fetchPriceList();
+	}, []);
+
+	return (
+		<ThemeProvider>
+			<Header />
+			<Main />
+			<Footer />
+			<Modal>
+				<PriceTable priceList={priceList} />
+			</Modal>
+		</ThemeProvider>
+	);
 }
 
-Home.propTypes = {
-	getPriceList: PropTypes.func.isRequired
-};
-const mapDispatchToProps = {
-	getPriceList: addPriceList
-};
-
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;

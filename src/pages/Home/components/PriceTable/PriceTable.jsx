@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaSort } from 'react-icons/fa';
 import {
 	addPriceList,
@@ -9,18 +8,15 @@ import {
 } from '../../../../store/modules/PriceList/reducer';
 import './priceTable.scss';
 
-class PriceTable extends Component {
-	async componentDidMount() {
-		document.addEventListener('keydown', this.handleTableActivation);
-	}
+function PriceTable() {
+	const dispatch = useDispatch();
 
-	componentWillUnmount() {
-		document.removeEventListener('keydown', this.handleTableActivation);
-	}
+	const active = useSelector(state => state.price.active);
+	const priceList = useSelector(state => state.price.priceList);
+	const ascendingPrice = useSelector(state => state.price.ascendingPrice);
 
-	handleTableActivation = e => {
+	const handleTableActivation = e => {
 		e.preventDefault();
-		const { active, dispatch, priceList } = this.props;
 		const tempPriceList = [...priceList];
 		let activeIndex = tempPriceList.findIndex(item => item.active);
 
@@ -52,22 +48,23 @@ class PriceTable extends Component {
 			dispatch(addPriceList(tempPriceList));
 		}
 	};
+	useEffect(() => {
+		document.addEventListener('keydown', handleTableActivation);
 
-	/*
-        Функция для того чтобы вернуть числовое значение из строки,
-        если внутри строки числа нет то вернется 0 
-     */
-	formatPrice = price => {
+		return () => {
+			document.removeEventListener('keydown', handleTableActivation);
+		};
+	}, []);
+
+	const formatPrice = price => {
 		const match = price.match(/\d+/);
 		return match ? +match[0] : 0;
 	};
 
-	sortData = () => {
-		const { priceList, ascendingPrice, dispatch } = this.props;
-
+	const sortData = () => {
 		const sortedData = [...priceList].sort((a, b) => {
-			const priceA = this.formatPrice(a.data.price);
-			const priceB = this.formatPrice(b.data.price);
+			const priceA = formatPrice(a.data.price);
+			const priceB = formatPrice(b.data.price);
 
 			return !ascendingPrice ? priceA - priceB : priceB - priceA;
 		});
@@ -76,61 +73,34 @@ class PriceTable extends Component {
 		dispatch(setAscendingPrice());
 	};
 
-	render() {
-		const { priceList, active } = this.props;
-		return (
-			<div className={`table-container ${active && 'active'}`}>
-				<table className='table'>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>
-								Price
-								<FaSort onClick={this.sortData} />
-							</th>
-						</tr>
-					</thead>
+	return (
+		<div className={`table-container ${active && 'active'}`}>
+			<table className='table'>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>
+							Price
+							<FaSort onClick={sortData} />
+						</th>
+					</tr>
+				</thead>
 
-					<tbody>
-						{priceList.map((item, index) => (
-							<tr className={item.active ? 'selected' : ''} key={item.id}>
-								<td>{index + 1}</td>
-								<td>{item.data.name}</td>
-								<td>{item.data.description}</td>
-								<td>{item.data.price}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
-		);
-	}
+				<tbody>
+					{priceList.map((item, index) => (
+						<tr className={item.active ? 'selected' : ''} key={item.id}>
+							<td>{index + 1}</td>
+							<td>{item.data.name}</td>
+							<td>{item.data.description}</td>
+							<td>{item.data.price}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	);
 }
 
-PriceTable.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	active: PropTypes.bool.isRequired,
-	priceList: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			data: PropTypes.shape({
-				name: PropTypes.string.isRequired,
-				description: PropTypes.string.isRequired,
-				price: PropTypes.string.isRequired
-			}).isRequired,
-			active: PropTypes.bool.isRequired
-		})
-	).isRequired,
-	ascendingPrice: PropTypes.bool.isRequired
-};
-const mapStateToProps = state => {
-	return {
-		active: state.price.active,
-		priceList: state.price.priceList,
-		ascendingPrice: state.price.ascendingPrice
-	};
-};
-
-export default connect(mapStateToProps)(PriceTable);
+export default PriceTable;

@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Image extends Component {
-	handleLoad = nameImg => {
+function Image({ src, alt }) {
+	const handleLoad = nameImg => {
 		console.log(`Image "${nameImg}" loaded`);
 	};
 
-	handleError = nameImg => {
+	const handleError = nameImg => {
 		console.error(new Error(`Error loading image - "${nameImg}"`));
 	};
 
-	render() {
-		const { src, alt } = this.props;
-		return (
-			<img
-				src={src}
-				alt={alt}
-				onLoad={() => this.handleLoad(alt)}
-				onError={() => this.handleError(alt)}
-			/>
-		);
-	}
+	return (
+		<img
+			src={src}
+			alt={alt}
+			onLoad={() => handleLoad(alt)}
+			onError={() => handleError(alt)}
+		/>
+	);
 }
 
 Image.propTypes = {

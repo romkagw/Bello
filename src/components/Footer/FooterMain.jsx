@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
 	FaFacebookF,
 	FaInstagram,
@@ -11,16 +12,15 @@ import Image from '../Image/Image';
 import Button from '../Button/Button';
 
 function FooterMain() {
+	const { t } = useTranslation();
+
 	return (
 		<section id='footer-main'>
 			<div className='container'>
 				<div className='footer-content'>
 					<div className='social-media'>
 						<Image src={logo} alt='logo' />
-						<p>
-							Bello is a trading name of Bello Insurance Services LLC. Bello
-							policies are issued by [Insert Underwriter here].
-						</p>
+						<p>{t('footer.content')}</p>
 						<div>
 							<input type='text' />
 							<Button arrowPointer>Go</Button>
@@ -44,22 +44,22 @@ function FooterMain() {
 						</div>
 					</div>
 					<div className='footer-info'>
-						<h6>Resources</h6>
-						<h6>Magazine</h6>
-						<h6>More</h6>
-						<Link to='/#'>Term life insurance plans</Link>
-						<Link to='/#'>Insurance</Link>
-						<Link to='/#'>Claims</Link>
-						<Link to='/#'>Insurance calculator</Link>
-						<Link to='/#'>Finances</Link>
-						<Link to='/#'>Terms</Link>
-						<Link to='/#'>Guide to life insurance</Link>
-						<Link to='/#'>Health</Link>
-						<Link to='/#'>Privacy</Link>
-						<Link to='/#'>Contact</Link>
-						<Link to='/#'>Updates</Link>
-						<Link to='/#'>Licenses</Link>
-						<Link to='/#'>FAQs</Link>
+						<h6>{t('footer.resources')}</h6>
+						<h6>{t('footer.magazine')}</h6>
+						<h6>{t('footer.more')}</h6>
+						<Link to='/#'>{t('footer.termLife')}</Link>
+						<Link to='/#'>{t('footer.insurance')}</Link>
+						<Link to='/#'>{t('footer.claims')}</Link>
+						<Link to='/#'>{t('footer.magazine')}</Link>
+						<Link to='/#'>{t('footer.finances')}</Link>
+						<Link to='/#'>{t('footer.terms')}</Link>
+						<Link to='/#'>{t('footer.lifeInsurance')}</Link>
+						<Link to='/#'>{t('footer.health')}</Link>
+						<Link to='/#'>{t('footer.privacy')}</Link>
+						<Link to='/#'>{t('footer.contact')}</Link>
+						<Link to='/#'>{t('footer.updates')}</Link>
+						<Link to='/#'>{t('footer.licenses')}</Link>
+						<Link to='/#'>{t('footer.FAQs')}</Link>
 					</div>
 				</div>
 			</div>

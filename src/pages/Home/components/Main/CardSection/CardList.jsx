@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 import Button from '../../../../../components/Button/Button';
+import './card.scss';
 
 function CardList({ list }) {
 	const [cardList, setCardList] = useState(list);
+	const [language, setLanguage] = useState('');
+
+	useEffect(() => {
+		setLanguage(localStorage.getItem('i18nextLng'));
+		setCardList(list);
+	}, [list]);
 
 	const [currentCard, setCurrentCard] = useState(null);
 
@@ -56,7 +63,9 @@ function CardList({ list }) {
 					onDragStart={() => dragStartHandler(card)}
 					onDragOver={e => dragOverHandler(e, card)}
 					onDragEnd={dragEndHandler}
-					className={`card${card.id} ${card.hide && 'hide'}`}
+					className={`card${card.id} ${card.hide && 'hide'} ${
+						language === 'ua' && 'card_ua'
+					}`}
 					key={card.id}
 				>
 					<h4>{card.title}</h4>

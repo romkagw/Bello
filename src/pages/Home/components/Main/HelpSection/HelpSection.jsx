@@ -1,18 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import Button from '../../../../../components/Button/Button';
 
 function HelpSection() {
+	const { t } = useTranslation();
+
 	return (
 		<section id='help'>
 			<div className='container'>
 				<div className='help-block'>
 					<div className='help-content'>
-						<h5>Technology meets service</h5>
-						<h3>We&apos;re here to help</h3>
-						<p>
-							Bella, our smart bot, can guide you to your perfect policy.
-							There’s also human help whenever you need it.
-						</p>
-						<Button arrowPointer>Get help</Button>
+						<h5>{t('help.title')}</h5>
+						<h3>{t('help.strong-title')}</h3>
+						<p>{t('help.content')}</p>
+						<Button arrowPointer>{t('help.getHelp')}</Button>
 					</div>
 					<div className='help-image' />
 				</div>

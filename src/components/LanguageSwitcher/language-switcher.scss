@@ -1,0 +1,57 @@
+.language-switcher {
+	transition: 0.6s;
+	position: absolute;
+	right: 28px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 40px 0;
+}
+
+.language-ukraine {
+	background-image: url('../../assets/images/ukraine.png');
+	background-size: contain;
+	filter: drop-shadow(3px 3px 4px black);
+	width: 30px;
+	height: 30px;
+	margin-bottom: 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.1);
+	}
+	&:active {
+		transform: scale(0.7);
+	}
+}
+.actives {
+	transition: 0.6s;
+	flex-direction: column-reverse;
+}
+.language-united-kingdom {
+	background-image: url('../../assets/images/united-kingdom.png');
+	background-size: contain;
+	filter: drop-shadow(3px 3px 4px black);
+	width: 30px;
+	height: 30px;
+	margin-bottom: 10px;
+
+	transition: 0.3s;
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.1);
+	}
+	&:active {
+		transform: scale(0.7);
+	}
+}
+
+.language-switcher__button:hover {
+	color: #fff;
+	background-color: #333;
+}
+
+.language-switcher__button.active {
+	color: #fff;
+	background-color: #333;
+}

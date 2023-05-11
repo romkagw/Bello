@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addPriceList } from '../../store/modules/PriceList/reducer';
-import fetchData from '../../api/api';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Modal from '../../components/Modal/Modal';
@@ -12,16 +11,6 @@ import './home.scss';
 
 function Home() {
 	const priceList = useSelector(state => state.priceList);
-	const dispatch = useDispatch();
-
-	async function fetchPriceList() {
-		const data = await fetchData();
-		dispatch(addPriceList(data));
-	}
-
-	useEffect(() => {
-		fetchPriceList();
-	}, []);
 
 	return (
 		<ThemeProvider>

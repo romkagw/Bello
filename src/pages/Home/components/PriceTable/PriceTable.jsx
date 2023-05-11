@@ -7,13 +7,21 @@ import {
 	setAscendingPrice
 } from '../../../../store/modules/PriceList/reducer';
 import './priceTable.scss';
+import fetchData from '../../../../api/api';
+import { showLoading } from '../../../../store/modules/Loading/reducer';
+import Loader from '../../../../components/Loader/Loader';
 
 function PriceTable() {
 	const dispatch = useDispatch();
 
 	const active = useSelector(state => state.price.active);
+	const { loading } = useSelector(state => state.loading);
 	const priceList = useSelector(state => state.price.priceList);
 	const ascendingPrice = useSelector(state => state.price.ascendingPrice);
+	async function fetchPriceList() {
+		const data = await fetchData();
+		dispatch(addPriceList(data));
+	}
 
 	const handleTableActivation = e => {
 		e.preventDefault();
@@ -28,6 +36,7 @@ function PriceTable() {
 		};
 
 		if (e.code === 'Space') {
+			showLoading(true);
 			isActiveRow(false);
 			dispatch(addPriceList(tempPriceList));
 			dispatch(setActive());
@@ -50,7 +59,7 @@ function PriceTable() {
 	};
 	useEffect(() => {
 		document.addEventListener('keydown', handleTableActivation);
-
+		fetchPriceList();
 		return () => {
 			document.removeEventListener('keydown', handleTableActivation);
 		};
@@ -89,16 +98,18 @@ function PriceTable() {
 				</thead>
 
 				<tbody>
-					{priceList.map((item, index) => (
-						<tr className={item.active ? 'selected' : ''} key={item.id}>
-							<td>{index + 1}</td>
-							<td>{item.data.name}</td>
-							<td>{item.data.description}</td>
-							<td>{item.data.price}</td>
-						</tr>
-					))}
+					{priceList &&
+						priceList.map((item, index) => (
+							<tr className={item.active ? 'selected' : ''} key={item.id}>
+								<td>{index + 1}</td>
+								<td>{item.data.name}</td>
+								<td>{item.data.description}</td>
+								<td>{item.data.price}</td>
+							</tr>
+						))}
 				</tbody>
 			</table>
+			{loading && <Loader />}
 		</div>
 	);
 }

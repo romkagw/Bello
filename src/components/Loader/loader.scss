@@ -1,0 +1,16 @@
+.loader-block {
+	margin: 0 auto;
+	width: -webkit-fill-available;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	transition: 0.5s;
+	svg {
+		stroke: rgb(50, 53, 53);
+	}
+}
+
+.loader-block h2 {
+	color: rgb(58, 58, 58);
+	line-height: 80px;
+}

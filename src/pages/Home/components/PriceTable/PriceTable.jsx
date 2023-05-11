@@ -7,21 +7,15 @@ import {
 	setAscendingPrice
 } from '../../../../store/modules/PriceList/reducer';
 import './priceTable.scss';
-import fetchData from '../../../../api/api';
-import { showLoading } from '../../../../store/modules/Loading/reducer';
+import fetchData from '../../../../store/modules/PriceList/actions';
 import Loader from '../../../../components/Loader/Loader';
 
 function PriceTable() {
 	const dispatch = useDispatch();
 
-	const active = useSelector(state => state.price.active);
-	const { loading } = useSelector(state => state.loading);
-	const priceList = useSelector(state => state.price.priceList);
-	const ascendingPrice = useSelector(state => state.price.ascendingPrice);
-	async function fetchPriceList() {
-		const data = await fetchData();
-		dispatch(addPriceList(data));
-	}
+	const { priceList, loading, active, ascendingPrice } = useSelector(
+		state => state.price
+	);
 
 	const handleTableActivation = e => {
 		e.preventDefault();
@@ -36,7 +30,6 @@ function PriceTable() {
 		};
 
 		if (e.code === 'Space') {
-			showLoading(true);
 			isActiveRow(false);
 			dispatch(addPriceList(tempPriceList));
 			dispatch(setActive());
@@ -57,9 +50,12 @@ function PriceTable() {
 			dispatch(addPriceList(tempPriceList));
 		}
 	};
+
 	useEffect(() => {
 		document.addEventListener('keydown', handleTableActivation);
-		fetchPriceList();
+
+		dispatch(fetchData());
+
 		return () => {
 			document.removeEventListener('keydown', handleTableActivation);
 		};

@@ -4,22 +4,18 @@ import Button from '../Button/Button';
 import './language-switcher.scss';
 
 function LanguageSwitcher() {
-	const [currentLanguage, setCurrentLanguage] = useState(
-		localStorage.getItem('i18nextLng')
-	);
-
 	const { i18n } = useTranslation();
 
 	const changeLanguage = language => {
 		i18n.changeLanguage(language);
-		setCurrentLanguage(language);
 	};
+
 	useEffect(() => {
 		document.documentElement.style.setProperty(
 			'--main-font',
-			currentLanguage === 'ua' ? 'Inter, sans-serif' : 'Work Sans'
+			i18n.language === 'ua' ? 'Inter, sans-serif' : 'Work Sans'
 		);
-	}, [currentLanguage]);
+	}, [i18n.language]);
 
 	const [showSwitcher] = useState(false);
 

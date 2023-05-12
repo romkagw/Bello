@@ -9,13 +9,20 @@ import {
 import './priceTable.scss';
 import fetchData from '../../../../store/modules/PriceList/actions';
 import Loader from '../../../../components/Loader/Loader';
+import {
+	selectPriceList,
+	selectLoading,
+	selectActive,
+	selectAscendingPrice
+} from '../../../../store/modules/PriceList/selectors';
 
 function PriceTable() {
 	const dispatch = useDispatch();
 
-	const { priceList, loading, active, ascendingPrice } = useSelector(
-		state => state.price
-	);
+	const priceList = useSelector(selectPriceList);
+	const loading = useSelector(selectLoading);
+	const active = useSelector(selectActive);
+	const ascendingPrice = useSelector(selectAscendingPrice);
 
 	const handleTableActivation = e => {
 		e.preventDefault();
@@ -95,6 +102,7 @@ function PriceTable() {
 
 				<tbody>
 					{priceList &&
+						!loading &&
 						priceList.map((item, index) => (
 							<tr className={item.active ? 'selected' : ''} key={item.id}>
 								<td>{index + 1}</td>

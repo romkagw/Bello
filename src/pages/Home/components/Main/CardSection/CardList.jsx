@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import Card from './Card';
 import Button from '../../../../../components/Button/Button';
 import './card.scss';
 
 function CardList({ list }) {
 	const [cardList, setCardList] = useState(list);
-	const [language, setLanguage] = useState('');
+	const { i18n } = useTranslation();
 
 	useEffect(() => {
-		setLanguage(localStorage.getItem('i18nextLng'));
 		setCardList(list);
 	}, [list]);
 
 	const [currentCard, setCurrentCard] = useState(null);
 
-	const dragStartHandler = card => {
-		const indexCard = cardList.indexOf(card);
-		const updatedCardList = [...cardList];
-
-		updatedCardList[indexCard] = { ...card, hide: true };
-		setCardList(updatedCardList);
+	const dragStartHandler = (card, index) => {
+		setCardList(prevCardList => {
+			return prevCardList.map((c, i) => {
+				return i === index ? { ...card, hide: true } : c;
+			});
+		});
 		setCurrentCard(card);
 	};
 
@@ -58,13 +58,13 @@ function CardList({ list }) {
 
 	return (
 		<div className='cards-block'>
-			{cardList.sort(sortCards).map(card => (
+			{cardList.sort(sortCards).map((card, index) => (
 				<Card
-					onDragStart={() => dragStartHandler(card)}
+					onDragStart={() => dragStartHandler(card, index)}
 					onDragOver={e => dragOverHandler(e, card)}
 					onDragEnd={dragEndHandler}
 					className={`card${card.id} ${card.hide && 'hide'} ${
-						language === 'ua' && 'card_ua'
+						i18n.language === 'ua' && 'card_ua'
 					}`}
 					key={card.id}
 				>

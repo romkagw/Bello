@@ -1,28 +1,30 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { FaSort } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import './priceTable.scss';
+import Loader from '../../../../components/Loader/Loader';
+import { useGetPriceListQuery } from '../../../../store/api/belloApi';
+import {
+	selectActive,
+	selectAscendingPrice,
+	selectPriceList
+} from '../../../../store/modules/PriceList/selectors';
 import {
 	addPriceList,
 	setActive,
 	setAscendingPrice
 } from '../../../../store/modules/PriceList/reducer';
-import './priceTable.scss';
-import fetchData from '../../../../store/modules/PriceList/actions';
-import Loader from '../../../../components/Loader/Loader';
-import {
-	selectPriceList,
-	selectLoading,
-	selectActive,
-	selectAscendingPrice
-} from '../../../../store/modules/PriceList/selectors';
 
 function PriceTable() {
 	const dispatch = useDispatch();
-
-	const priceList = useSelector(selectPriceList);
-	const loading = useSelector(selectLoading);
+	const { data, isLoading } = useGetPriceListQuery();
 	const active = useSelector(selectActive);
 	const ascendingPrice = useSelector(selectAscendingPrice);
+	const priceList = useSelector(selectPriceList);
+
+	useEffect(() => {
+		dispatch(addPriceList(data));
+	}, []);
 
 	const handleTableActivation = e => {
 		e.preventDefault();
@@ -60,9 +62,6 @@ function PriceTable() {
 
 	useEffect(() => {
 		document.addEventListener('keydown', handleTableActivation);
-
-		dispatch(fetchData());
-
 		return () => {
 			document.removeEventListener('keydown', handleTableActivation);
 		};
@@ -95,14 +94,14 @@ function PriceTable() {
 						<th>Description</th>
 						<th>
 							Price
-							<FaSort onClick={sortData} />
+							<FaSort onClick={() => sortData()} />
 						</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					{priceList &&
-						!loading &&
+						!isLoading &&
 						priceList.map((item, index) => (
 							<tr className={item.active ? 'selected' : ''} key={item.id}>
 								<td>{index + 1}</td>
@@ -113,7 +112,7 @@ function PriceTable() {
 						))}
 				</tbody>
 			</table>
-			{loading && <Loader />}
+			{isLoading && <Loader />}
 		</div>
 	);
 }

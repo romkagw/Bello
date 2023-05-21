@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchData from './actions';
 
 const initialState = {
 	priceList: null,
@@ -21,22 +20,6 @@ const PriceSlice = createSlice({
 		addPriceList: (state, actions) => {
 			state.priceList = actions.payload;
 		}
-	},
-	extraReducers: builder => {
-		builder
-			.addCase(fetchData.pending, state => {
-				state.loading = true;
-				state.error = null;
-			})
-			.addCase(fetchData.fulfilled, (state, action) => {
-				state.loading = false;
-				state.priceList = action.payload;
-			})
-			.addCase(fetchData.rejected, (state, action) => {
-				state.loading = false;
-				state.error = action.error.message;
-				console.log(state.error);
-			});
 	}
 });
 

@@ -24,7 +24,7 @@ function PriceTable() {
 
 	useEffect(() => {
 		dispatch(addPriceList(data));
-	}, []);
+	}, [isLoading]);
 
 	const handleTableActivation = e => {
 		e.preventDefault();
@@ -101,7 +101,6 @@ function PriceTable() {
 
 				<tbody>
 					{priceList &&
-						!isLoading &&
 						priceList.map((item, index) => (
 							<tr className={item.active ? 'selected' : ''} key={item.id}>
 								<td>{index + 1}</td>
